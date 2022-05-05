@@ -1,0 +1,43 @@
+:root {
+    /* ***************** Colors ***************** */
+    /* Basic */
+    --black: #000000;
+    --white: #ffffff;
+    --cod-gray: #121212;
+    --bon-jour: #EEEBEE;
+    --black-o-50: rgba(0, 0, 0, .5);
+    --black-o-25: rgba(0, 0, 0, .25);
+    --white-o-50: rgba(255, 255, 255, 0.5);
+    /* Main */
+    --voodoo: #5C3A5D;
+    --voodoo-dark: #4A304B;
+    --medium-purple: #9457EB;
+    /* Semantic */
+    --forest-green: #267A1A;
+    --fun-blue: #184FAB;
+    --pirate-gold: #C68101;
+    --disco: #901458;
+    --dusty-gray: #999999;
+
+    /* ***************** Categories ***************** */
+    --primary: var(--voodoo);
+    /* Text */
+    --text-color: var(--cod-gray);
+    --text-light-color: var(--bon-jour);
+    /* Headings */
+    --headings-color: var(--black);
+    --headings-light-color: var(--white);
+    /* Links */
+    --links-color: var(--medium-purple);
+    /* Background */
+    --bg-default: var(--cod-gray);
+    --bg-light: var(--white);
+    /* Borders */
+    --border-color: var(--medium-purple);
+    /* Box shadows */
+    --box-shadow-color: var(--black-o-25);
+    --logo-shadow-color: var(--white-o-50);
+    --card-shadow-color: var(--medium-purple);
+}
+
+/* Color names from: https://chir.ag/projects/name-that-color */
