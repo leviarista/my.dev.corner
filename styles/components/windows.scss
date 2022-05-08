@@ -1,0 +1,39 @@
+.window {
+    position: absolute;
+    background-color: var(--window-bg-color);
+    border: solid var(--border-color) 1px;
+    border-radius: var(--border-radius);
+
+    &:hover {
+        box-shadow: 0px 0px 7px var(--window-shadow-color);
+    }
+
+    &-title {
+        padding: var(--vertical-padding) var(--horizontal-padding);
+        background-color: var(--window-title-bg-color);
+        border-radius: var(--border-radius);
+        cursor: move;
+    }
+
+    &-body {
+        padding: var(--vertical-padding) var(--horizontal-padding);
+        min-height: 400px;
+    }
+}
+
+.settings-window,
+.widgets-window {
+    max-width: 100%;
+    left: calc(50% - 350px);
+    top: calc(50% - 200px);
+}
+
+@media only screen and (max-width: 600px) {
+
+    .settings-window,
+    .widgets-window {
+        max-width: 90%;
+        left: 5%;
+        top: calc(15%);
+    }
+}

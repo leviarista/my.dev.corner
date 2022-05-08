@@ -1,7 +1,13 @@
 @use "base/normalize.scss";
 @use "base/colors.scss";
 @use "base/typography.scss";
-@use "base/margins.scss";
+@use "base/spacing.scss";
+@use "base/borders.scss";
 @use "general/body.scss";
 @use "components/logo.scss";
+@use "components/buttons.scss";
+@use "components/windows.scss";
+@use "components/widgets/widgets.scss";
+@use "components/widgets/text-widget.scss";
+@use "components/widgets/image-widget.scss";
 @use "modules/main.scss";

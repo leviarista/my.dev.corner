@@ -1,5 +1,68 @@
-header{
+main {
+    margin: var(--vertical-margin) var(--horizontal-margin);
+}
+
+#background {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--bg-default);
+    background-image: url('/img/bg-1.jpg');
+    background-image: url('/img/bg-2.jpg');
+    // background-image: url('/img/bg-3.jpg');
+    // background-image: url('/img/bg-4.jpg');
+    // background-image: url('/img/bg-5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    z-index: -1;
+
+    video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
+
+#background:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+    opacity: 0.15;
+    background-color: var(--black);
+    // background-image: url('/img/bg-1.jpg');
+    // background-repeat: no-repeat;
+    // background-position: 50% 0;
+    // background-size: cover;
+}
+
+header {
     position: fixed;
     bottom: var(--vertical-margin);
     left: var(--horizontal-margin);
+}
+
+.main-page {
+    .buttons-container {
+        display: flex;
+        position: absolute;
+        right: var(--horizontal-margin);
+
+        .btn:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
 }

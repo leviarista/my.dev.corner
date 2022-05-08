@@ -8,10 +8,12 @@
     --black-o-50: rgba(0, 0, 0, .5);
     --black-o-25: rgba(0, 0, 0, .25);
     --white-o-50: rgba(255, 255, 255, 0.5);
+    --white-o-25: rgba(255, 255, 255, 0.25);
     /* Main */
     --voodoo: #5C3A5D;
     --voodoo-dark: #4A304B;
     --medium-purple: #9457EB;
+    --voodoo-o-50: #5C3A5D80;
     /* Semantic */
     --forest-green: #267A1A;
     --fun-blue: #184FAB;
@@ -38,6 +40,16 @@
     --box-shadow-color: var(--black-o-25);
     --logo-shadow-color: var(--white-o-50);
     --card-shadow-color: var(--medium-purple);
+    --button-shadow-hover-color: var(--white-o-50);
+    --window-shadow-color: var(--white-o-25);
+    /* Scrollbar */
+    --scrollbar-color: var(--white-o-50);
+    /* Buttons */
+    // --button-primary-color: linear-gradient(180deg, rgba(148, 87, 235, 0.8) 0%, rgba(113, 69, 160, 0.89375) 46.88%, #4A304B 100%);
+    --button-primary-color: linear-gradient(180deg, #9E709E 0.52%, #5C3A5D 50.52%, #4A2A51 100%);
+    /* Windows */
+    --window-bg-color: var(--black-o-50);
+    --window-title-bg-color: var(--voodoo-o-50);
 }
 
 /* Color names from: https://chir.ag/projects/name-that-color */
