@@ -6,6 +6,7 @@ import Window from '../components/windows/Window';
 import SettingsWindow from '../components/windows/Settingswindow';
 import WidgetsWindow from '../components/windows/WidgetsWindow';
 import StickerWidget from '../components/widgets/StickerWidget';
+import MainBackground from '../components/MainBackground';
 
 export default function Home() {
 
@@ -28,16 +29,22 @@ export default function Home() {
     console.log('closeSettingsWindow')
     setSettingsWindowOpened(false);
   }
-  
+
   const closeWidgetsWindow = () => {
     console.log('closeWidgetsWindow')
     setWidgetsWindowOpened(false);
   }
 
+  // const [backgroundType, setbackgroundType] = useState('color');
+  // const [backgroundValue, setbackgroundValue] = useState('var(--primary)');
+  const [backgroundType, setBackgroundType] = useState('image');
+  const [backgroundValue, setBackgroundValue] = useState('url("/img/bg-4.jpg")');
+  // const [backgroundType, setbackgroundType] = useState('video');
+  // const [backgroundValue, setbackgroundValue] = useState('https://www.w3schools.com/howto/rain.mp4');
+  // const [backgroundValue, setbackgroundValue] = useState('/videos/bg-5.mp4');
+
   const [settingsWindowOpened, setSettingsWindowOpened] = useState(false);
   const [widgetsWindowOpened, setWidgetsWindowOpened] = useState(false);
-
-  const MainBackground = React.lazy(() => import('../components/MainBackground'));
 
   return (
     <div>
@@ -49,9 +56,7 @@ export default function Home() {
           <TextWidget className={'slogan-text-widget'} />
         </header>
 
-        <Suspense fallback={<div></div>}>
-          <MainBackground />
-        </Suspense>
+        <MainBackground type={backgroundType} value={backgroundValue} />
 
         <div className='buttons-container'>
           <Button type={'icon'} variant={'primary'} handleClick={handleClickAddButton}>
@@ -70,7 +75,12 @@ export default function Home() {
         <StickerWidget className={'sticker-widget'} />
 
 
-        <SettingsWindow isOpenned={settingsWindowOpened} closeSettingsWindow={closeSettingsWindow} />
+        <SettingsWindow
+          isOpenned={settingsWindowOpened}
+          closeSettingsWindow={closeSettingsWindow}
+          setBackgroundType={setBackgroundType}
+          setBackgroundValue={setBackgroundValue}
+        />
         <WidgetsWindow isOpenned={widgetsWindowOpened} closeWidgetsWindow={closeWidgetsWindow} />
 
       </main>

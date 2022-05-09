@@ -1,0 +1,23 @@
+input,
+select,
+.btn {
+    height: 35px;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgb(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    border-radius: var(--input-border-radius);
+    font-family: var(--main-font-familiy);
+    color: var(--text-color);
+
+    &:focus {
+        box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
+        outline: transparent;
+        // filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+    }
+
+    &::placeholder {
+        color: #cccccc;
+        font-family: var(--main-font-familiy);
+    }
+}

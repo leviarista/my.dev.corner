@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const MainBackground = () => {
-    console.log('....')
+const MainBackground = ({ type, value }) => {
+    let style = {};
+    if (type === 'color') {
+        style.backgroundColor = value;
+    } else if (type === 'image') {
+        style.backgroundImage = value;
+    }
 
     return (
-        <div id='background'>
-            {/* <video autoPlay loop muted poster="./img/bg-2.jpg">
-                <source src="./videos/bg-2.mp4" type="video/mp4" />
-            </video> */}
+        <div id='background' style={style}>
+            {type === 'video' &&
+                <>
+                    <video autoPlay loop muted
+                        src={value}
+                    >
+                    </video>
+                </>
+            }
         </div>)
 }
 

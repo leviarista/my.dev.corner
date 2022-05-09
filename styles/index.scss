@@ -4,8 +4,10 @@
 @use "base/spacing.scss";
 @use "base/borders.scss";
 @use "general/body.scss";
+@use "general/box-sizing.scss";
 @use "components/logo.scss";
 @use "components/buttons.scss";
+@use "components/inputs.scss";
 @use "components/windows.scss";
 @use "components/widgets/widgets.scss";
 @use "components/widgets/text-widget.scss";

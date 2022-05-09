@@ -1,9 +1,10 @@
-.widget{
-    transition: all .1s ease;
-    
-    &:hover{
-        background-color: var(--window-bg-color);
+.widget {
+    transition: background-color .25s ease;
+    border-radius: var(--border-radius);
+    border: none;
+
+    &:hover {
+        background-color: var(--widget-hover-bg-color);
         border: solid var(--border-color) 1px;
-        border-radius: var(--border-radius);    
     }
 }

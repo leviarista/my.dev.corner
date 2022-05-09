@@ -15,7 +15,7 @@
 
     &:hover {
         transform: scale(1.01);
-        box-shadow: 0px 0px 5px var(--button-shadow-hover-color);
+        box-shadow: 0px 0px 5px var(--button-hover-shadow-color);
     }
 
     &-primary{
@@ -23,11 +23,11 @@
     }
 
     &-close-window {
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 10px;
+        right: 10px;
         display: flex;
         align-items: center;
         justify-content: center;

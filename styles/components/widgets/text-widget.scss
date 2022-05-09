@@ -2,14 +2,15 @@
     display: block;
     position: absolute;
     width: fit-content;
+    padding: 0px 15px;
     font-family: 'Annie Use Your Telescope', cursive;
     font-size: 20px;
-    text-shadow: 0 0 3px #121212;
+    text-shadow: 0 0 2px var(--text-color);
     white-space: nowrap;
     cursor: move;
 }
 
 .slogan-text-widget {
-    bottom: 2px;
-    left: 157px;
+    bottom: 0px;
+    left: 150px;
 }
