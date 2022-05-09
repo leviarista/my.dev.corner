@@ -1,6 +1,5 @@
 input,
-select,
-.btn {
+select {
     height: 35px;
     padding: 0 10px;
     background: rgba(255, 255, 255, 0.15);
@@ -20,4 +19,8 @@ select,
         color: #cccccc;
         font-family: var(--main-font-familiy);
     }
+}
+
+input[type=color]{
+    cursor: pointer;
 }

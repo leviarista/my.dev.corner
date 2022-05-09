@@ -3,7 +3,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import TextWidget from '../components/widgets/TextWidget';
 import Button from '../components/buttons/Button';
 import Window from '../components/windows/Window';
-import SettingsWindow from '../components/windows/Settingswindow';
+import SettingsWindow from '../components/windows/SettingsWindow';
 import WidgetsWindow from '../components/windows/WidgetsWindow';
 import StickerWidget from '../components/widgets/StickerWidget';
 import MainBackground from '../components/MainBackground';

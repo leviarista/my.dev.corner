@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const MainBackground = ({ type, value }) => {
+    console.log(type, value)
     let style = {};
     if (type === 'color') {
         style.backgroundColor = value;

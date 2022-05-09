@@ -3,6 +3,7 @@
     background-color: var(--window-bg-color);
     border: solid var(--border-color) 1px;
     border-radius: var(--border-radius);
+    backdrop-filter: blur(5px);
 
     &:hover {
         box-shadow: 0px 0px 7px var(--window-shadow-color);

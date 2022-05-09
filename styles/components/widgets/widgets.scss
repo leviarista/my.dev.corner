@@ -6,5 +6,6 @@
     &:hover {
         background-color: var(--widget-hover-bg-color);
         border: solid var(--border-color) 1px;
+        box-shadow: 0px 0px 7px var(--window-shadow-color);
     }
 }
