@@ -77,7 +77,6 @@ const SettingsWindow = ({ isOpenned, closeSettingsWindow, setBackgroundType, set
                         alt='bg-5'
                     />
                 </div>
-
             </div>
         </Window >
     )

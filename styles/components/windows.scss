@@ -19,7 +19,8 @@
 
     &-body {
         padding: var(--vertical-padding) var(--horizontal-padding);
-        min-height: 400px;
+        height: 450px;
+        overflow-y: scroll;
     }
 }
 

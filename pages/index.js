@@ -10,11 +10,6 @@ import MainBackground from '../components/MainBackground';
 
 export default function Home() {
 
-  console.log('first ');
-  useEffect(() => {
-    console.log('loaded');
-  }, [])
-
   const handleClickAddButton = () => {
     setSettingsWindowOpened(false);
     setWidgetsWindowOpened(true);
@@ -35,16 +30,17 @@ export default function Home() {
     setWidgetsWindowOpened(false);
   }
 
-  // const [backgroundType, setbackgroundType] = useState('color');
-  // const [backgroundValue, setbackgroundValue] = useState('var(--primary)');
-  const [backgroundType, setBackgroundType] = useState('image');
-  const [backgroundValue, setBackgroundValue] = useState('url("/img/bg-4.jpg")');
-  // const [backgroundType, setbackgroundType] = useState('video');
-  // const [backgroundValue, setbackgroundValue] = useState('https://www.w3schools.com/howto/rain.mp4');
-  // const [backgroundValue, setbackgroundValue] = useState('/videos/bg-5.mp4');
+  const [backgroundType, setBackgroundType] = useState('color');
+  const [backgroundValue, setBackgroundValue] = useState('var(--bg-default)');
 
   const [settingsWindowOpened, setSettingsWindowOpened] = useState(false);
   const [widgetsWindowOpened, setWidgetsWindowOpened] = useState(false);
+
+  useEffect(() => {
+    console.log('loaded');
+    setBackgroundType('image');
+    setBackgroundValue('url("/img/bg-2.jpg")');
+  }, [])
 
   return (
     <div>
