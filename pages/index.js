@@ -7,8 +7,14 @@ import SettingsWindow from '../components/windows/SettingsWindow';
 import WidgetsWindow from '../components/windows/WidgetsWindow';
 import StickerWidget from '../components/widgets/StickerWidget';
 import MainBackground from '../components/MainBackground';
+import Meta from '../components/Meta';
 
 export default function Home() {
+
+  /* *********************************** Windows *********************************** */
+
+  const [settingsWindowOpened, setSettingsWindowOpened] = useState(false);
+  const [widgetsWindowOpened, setWidgetsWindowOpened] = useState(false);
 
   const handleClickAddButton = () => {
     setSettingsWindowOpened(false);
@@ -21,35 +27,53 @@ export default function Home() {
   }
 
   const closeSettingsWindow = () => {
-    console.log('closeSettingsWindow')
     setSettingsWindowOpened(false);
   }
 
   const closeWidgetsWindow = () => {
-    console.log('closeWidgetsWindow')
     setWidgetsWindowOpened(false);
   }
+
+  /* *********************************** Background *********************************** */
 
   const [backgroundType, setBackgroundType] = useState('color');
   const [backgroundValue, setBackgroundValue] = useState('var(--bg-default)');
 
-  const [settingsWindowOpened, setSettingsWindowOpened] = useState(false);
-  const [widgetsWindowOpened, setWidgetsWindowOpened] = useState(false);
+  /* *********************************** Widgets *********************************** */
+
+  const [textWidgetState, setTextWidgetState] = useState(false);
+
+  const closeWidget = (id) => {
+    if (id === 'text') {
+      setTextWidgetState(false);
+    }
+  }
+
+  /* *********************************** *** *********************************** */
 
   useEffect(() => {
-    console.log('loaded');
+    // Background
     setBackgroundType('image');
     setBackgroundValue('url("/img/bg-2.jpg")');
+    // Default Widgets
+    setTextWidgetState(true);
   }, [])
 
+    /* *********************************** *** *********************************** */
+
   return (
-    <div>
+    <>
+      <Meta
+        title={""}
+        description={"The dev's favorite corner."}
+      />
+
       <main className='main-page'>
         <header>
           <div className='logo'>
             <Image src="/img/my.dev.corner-logo.png" alt="my dev corner logo" width={150} height={150} />
           </div>
-          <TextWidget className={'slogan-text-widget'} />
+          <TextWidget className={'slogan-text-widget'} isOpenned={textWidgetState} closeWidget={() => closeWidget('text')} />
         </header>
 
         <MainBackground type={backgroundType} value={backgroundValue} />
@@ -68,8 +92,7 @@ export default function Home() {
 
         <div id="main-container"></div>
 
-        <StickerWidget className={'sticker-widget'} />
-
+        {/* <StickerWidget className={'sticker-widget'} isOpenned={widgets.sticker} /> */}
 
         <SettingsWindow
           isOpenned={settingsWindowOpened}
@@ -78,8 +101,7 @@ export default function Home() {
           setBackgroundValue={setBackgroundValue}
         />
         <WidgetsWindow isOpenned={widgetsWindowOpened} closeWidgetsWindow={closeWidgetsWindow} />
-
       </main>
-    </div>
+    </>
   )
 }

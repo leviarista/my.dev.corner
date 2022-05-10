@@ -10,7 +10,7 @@ const Button = ({ type, text, variant, size, children, handleClick }) => {
             {type === 'icon' ?
                 children
                 :
-                { text }
+                text
             }
         </div>
     )

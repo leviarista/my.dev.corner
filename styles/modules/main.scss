@@ -79,3 +79,19 @@ header {
         }
     }
 }
+
+.widgets-window {
+    .widget-option {
+        margin-right: 5px;
+        padding: 15px;
+        background-color: var(--widget-hover-bg-color);
+        border-radius: var(--border-radius);
+        cursor: pointer;
+
+        &:hover {
+            border: solid var(--border-color) 1px;
+            box-shadow: 0px 0px 5px var(--window-shadow-color);
+        }
+
+    }
+}

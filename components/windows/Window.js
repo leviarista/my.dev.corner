@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ReactDOM from "react-dom";
 import Draggable from 'react-draggable';
 
 
 const Window = (props) => {
-    let { title, children, width, isOpenned, zIndex, componentClass, closeWindow } = props
+    let { title, children, className, isOpenned, width, zIndex, closeWindow } = props
 
     let classText = 'window';
-    if (componentClass) classText += ' ' + componentClass;
+    if (className) classText += ' ' + className;
 
     const nodeRef = React.useRef(null);
     const handleClick = () => { }
@@ -25,7 +25,10 @@ const Window = (props) => {
                 >
                     <div className='window-title'>
                         {title}
-                        <div className='btn-close-window' onClick={closeWindow}>
+                        <div className='btn-close-window'
+                            onClick={closeWindow}
+                            style={{ top: '5px', right: '5px' }}
+                        >
                             <img src='/img/icons/close-circle.svg' />
                         </div>
                     </div>

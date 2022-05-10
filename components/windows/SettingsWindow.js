@@ -20,7 +20,8 @@ const SettingsWindow = ({ isOpenned, closeSettingsWindow, setBackgroundType, set
 
     return (
         <Window title={'Settings'} width={700}
-            isOpenned={isOpenned} zIndex={1001} componentClass={'settings-window'}
+            className={'settings-window'}
+            isOpenned={isOpenned} zIndex={1001}
             closeWindow={closeSettingsWindow}
         >
             <div style={{ textAlign: 'center' }}>

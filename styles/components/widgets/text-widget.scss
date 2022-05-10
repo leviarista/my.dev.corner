@@ -8,9 +8,14 @@
     text-shadow: 0 0 2px var(--text-color);
     white-space: nowrap;
     cursor: move;
+
+    .btn-close-window {
+        top: -10px;
+        right: -10px;
+    }
 }
 
 .slogan-text-widget {
-    bottom: 0px;
-    left: 150px;
+    bottom: var(--vertical-margin);
+    left: calc(150px + var(--horizontal-margin));
 }

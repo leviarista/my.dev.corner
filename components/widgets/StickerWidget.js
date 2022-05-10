@@ -11,7 +11,11 @@ const StickerWidget = ({ className }) => {
       nodeRef={nodeRef}
     >
       <div ref={nodeRef} className={classText} >
-        <img src='/img/stickers/headphones-cat.gif' width={150}/>
+        <div className='btn-close-window'>
+          <img src='/img/icons/close-circle.svg' />
+        </div>
+
+        <img src='/img/stickers/headphones-cat.gif' width={150} />
       </div>
     </Draggable>
   )
