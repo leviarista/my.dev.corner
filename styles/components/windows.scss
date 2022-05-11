@@ -20,7 +20,7 @@
     &-body {
         padding: var(--vertical-padding) var(--horizontal-padding);
         height: 450px;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 }
 

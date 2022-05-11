@@ -8,7 +8,7 @@ import WidgetsWindow from '../components/windows/WidgetsWindow';
 import StickerWidget from '../components/widgets/StickerWidget';
 import MainBackground from '../components/MainBackground';
 import Meta from '../components/Meta';
-import { setStickerWidgetOpenned, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetValue } from '../app/actions';
+import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setStickerWidgetOpenned, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetValue } from '../app/actions';
 import { useDispatch } from 'react-redux';
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
 
@@ -67,6 +67,15 @@ export default function Home() {
 
     dispatch(setStickerWidgetValue('/img/stickers/headphones-cat.gif'));
     dispatch(setStickerWidgetOpenned(true));
+
+    dispatch(setAnalogClockWidgetOpenned(true));
+    let analogClockWidget = localStorage.getItem('analogClock');
+    if (analogClockWidget) {
+      analogClockWidget = JSON.parse(analogClockWidget);
+      // console.log("🚀 ", analogClockWidget)
+      dispatch(setAnalogClockWidgetPosition(analogClockWidget.position));
+      // dispatch(setAnalogClockWidgetPosition({ x: 100, y: 0 }));
+    }
   }, [])
 
   /* *********************************** *** *********************************** */
@@ -83,7 +92,7 @@ export default function Home() {
           <div className='logo'>
             <Image src="/img/my.dev.corner-logo.png" alt="my dev corner logo" width={150} height={150} />
           </div>
-          <TextWidget className={'slogan-text-widget'}  />
+          <TextWidget className={'slogan-text-widget'} />
         </header>
 
         <MainBackground type={backgroundType} value={backgroundValue} />

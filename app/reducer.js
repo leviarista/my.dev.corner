@@ -12,6 +12,7 @@ function reducer(state = {
     analogClockWidget: {
         id: 'analogClock',
         isOpenned: false,
+        position: { x: 0, y: 0 },
     },
 }, action) {
     switch (action.type) {
@@ -53,6 +54,14 @@ function reducer(state = {
                 analogClockWidget: {
                     ...state.analogClockWidget,
                     isOpenned: action.payload
+                }
+            }
+        case 'SET_ANALOG_CLOCK_WIDGET_POSITION':
+            return {
+                ...state,
+                analogClockWidget: {
+                    ...state.analogClockWidget,
+                    position: action.payload
                 }
             }
         default:

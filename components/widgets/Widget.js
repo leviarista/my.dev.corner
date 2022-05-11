@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from "react-dom";
 import Draggable from 'react-draggable'
 
-const Widget = ({ children, className, onClickClose, width }) => {
+const Widget = ({ width, children, className, position, onClickClose, onStop }) => {
 
     let classText = 'widget';
     if (className) classText += ' ' + className;
@@ -13,7 +13,8 @@ const Widget = ({ children, className, onClickClose, width }) => {
         ReactDOM.createPortal(
             <Draggable
                 nodeRef={nodeRef}
-                defaultPosition={{x: 0, y: 0}}
+                defaultPosition={position ?? { x: 0, y: 0 }}
+                onStop={onStop}
             >
                 <div ref={nodeRef}
                     className={classText}
