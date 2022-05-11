@@ -1,7 +1,9 @@
 .widget {
+    position: absolute;
     transition: background-color .25s ease;
     border-radius: var(--border-radius);
     border: solid transparent 1px;
+    cursor: move;
 
     &:hover {
         background-color: var(--widget-hover-bg-color);

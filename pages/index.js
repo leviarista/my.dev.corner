@@ -10,6 +10,7 @@ import MainBackground from '../components/MainBackground';
 import Meta from '../components/Meta';
 import { setStickerWidgetOpenned, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetValue } from '../app/actions';
 import { useDispatch } from 'react-redux';
+import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
 
 export default function Home() {
 
@@ -102,6 +103,7 @@ export default function Home() {
         <div id="main-container"></div>
 
         <StickerWidget className={'sticker-widget'} />
+        <AnalogClockWidget />
 
         <SettingsWindow
           isOpenned={settingsWindowOpened}

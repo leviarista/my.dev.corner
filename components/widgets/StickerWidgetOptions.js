@@ -12,7 +12,6 @@ const StickerWidgetOptions = ({ isOpenned, toggleWidgetOption, toggleWidget }) =
         const value = input.current.value.trim();
         console.log("🚀 ~ file: StickerWidgetOptions.js ~ line 13 ~ onClickAdd ~ value", value)
         // if (text !== "") {
-        //     // console.log("🚀")
         //     dispatch(setTextWidgetOpenned(true));
         //     dispatch(setTextWidgetValue(text));
         //     toggleWidgetOption();

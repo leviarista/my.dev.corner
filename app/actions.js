@@ -1,3 +1,10 @@
+export const setTextWidgetOpenned = (data) =>{
+    return {
+        type: 'SET_TEXT_WIDGET_OPENNED',
+        payload: data
+    }
+}
+
 export const setTextWidgetValue = (data) =>{
     return {
         type: 'SET_TEXT_WIDGET_VALUE',
@@ -5,9 +12,9 @@ export const setTextWidgetValue = (data) =>{
     }
 }
 
-export const setTextWidgetOpenned = (data) =>{
+export const setStickerWidgetOpenned = (data) =>{
     return {
-        type: 'SET_TEXT_WIDGET_OPENNED',
+        type: 'SET_STICKER_WIDGET_OPENNED',
         payload: data
     }
 }
@@ -19,9 +26,9 @@ export const setStickerWidgetValue = (data) =>{
     }
 }
 
-export const setStickerWidgetOpenned = (data) =>{
+export const setAnalogClockWidgetOpenned = (data) =>{
     return {
-        type: 'SET_STICKER_WIDGET_OPENNED',
+        type: 'SET_ANALOG_CLOCK_WIDGET_OPENNED',
         payload: data
     }
 }

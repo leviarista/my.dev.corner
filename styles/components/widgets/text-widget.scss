@@ -1,13 +1,11 @@
 .text-widget {
     display: block;
-    position: absolute;
     width: fit-content;
     padding: 0px 15px;
     font-family: 'Annie Use Your Telescope', cursive;
     font-size: 20px;
     text-shadow: 0 0 2px var(--text-color);
     white-space: nowrap;
-    cursor: move;
 
     .btn-close-window {
         top: -10px;

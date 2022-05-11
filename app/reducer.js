@@ -5,9 +5,13 @@ function reducer(state = {
         value: '',
     },
     stickerWidget: {
-        id: 'text',
+        id: 'sticker',
         isOpenned: false,
         value: '',
+    },
+    analogClockWidget: {
+        id: 'analogClock',
+        isOpenned: false,
     },
 }, action) {
     switch (action.type) {
@@ -41,6 +45,14 @@ function reducer(state = {
                 stickerWidget: {
                     ...state.textWidget,
                     value: action.payload
+                }
+            }
+        case 'SET_ANALOG_CLOCK_WIDGET_OPENNED':
+            return {
+                ...state,
+                analogClockWidget: {
+                    ...state.analogClockWidget,
+                    isOpenned: action.payload
                 }
             }
         default:
