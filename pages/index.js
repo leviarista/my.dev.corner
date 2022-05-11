@@ -8,8 +8,12 @@ import WidgetsWindow from '../components/windows/WidgetsWindow';
 import StickerWidget from '../components/widgets/StickerWidget';
 import MainBackground from '../components/MainBackground';
 import Meta from '../components/Meta';
+import { setStickerWidgetOpenned, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetValue } from '../app/actions';
+import { useDispatch } from 'react-redux';
 
 export default function Home() {
+
+  const dispatch = useDispatch();
 
   /* *********************************** Windows *********************************** */
 
@@ -43,9 +47,9 @@ export default function Home() {
 
   const [textWidgetState, setTextWidgetState] = useState(false);
 
-  const closeWidget = (id) => {
+  const toggleWidget = (id, value) => {
     if (id === 'text') {
-      setTextWidgetState(false);
+      setTextWidgetState(value ?? !textWidgetState);
     }
   }
 
@@ -57,9 +61,14 @@ export default function Home() {
     setBackgroundValue('url("/img/bg-2.jpg")');
     // Default Widgets
     setTextWidgetState(true);
+    dispatch(setTextWidgetOpenned(true));
+    dispatch(setTextWidgetValue("The dev's favorite corner."));
+
+    dispatch(setStickerWidgetValue('/img/stickers/headphones-cat.gif'));
+    dispatch(setStickerWidgetOpenned(true));
   }, [])
 
-    /* *********************************** *** *********************************** */
+  /* *********************************** *** *********************************** */
 
   return (
     <>
@@ -73,7 +82,7 @@ export default function Home() {
           <div className='logo'>
             <Image src="/img/my.dev.corner-logo.png" alt="my dev corner logo" width={150} height={150} />
           </div>
-          <TextWidget className={'slogan-text-widget'} isOpenned={textWidgetState} closeWidget={() => closeWidget('text')} />
+          <TextWidget className={'slogan-text-widget'}  />
         </header>
 
         <MainBackground type={backgroundType} value={backgroundValue} />
@@ -92,7 +101,7 @@ export default function Home() {
 
         <div id="main-container"></div>
 
-        {/* <StickerWidget className={'sticker-widget'} isOpenned={widgets.sticker} /> */}
+        <StickerWidget className={'sticker-widget'} />
 
         <SettingsWindow
           isOpenned={settingsWindowOpened}
@@ -100,7 +109,11 @@ export default function Home() {
           setBackgroundType={setBackgroundType}
           setBackgroundValue={setBackgroundValue}
         />
-        <WidgetsWindow isOpenned={widgetsWindowOpened} closeWidgetsWindow={closeWidgetsWindow} />
+        <WidgetsWindow
+          isOpenned={widgetsWindowOpened}
+          closeWidgetsWindow={closeWidgetsWindow}
+          toggleWidget={toggleWidget}
+        />
       </main>
     </>
   )

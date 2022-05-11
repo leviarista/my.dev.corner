@@ -10,7 +10,9 @@
     --black-o-25: rgba(0, 0, 0, .25);
     --white-o-50: rgba(255, 255, 255, 0.5);
     --white-o-25: rgba(255, 255, 255, 0.25);
+    --mine-shaft: #282828;
     --mine-shaft-o-50: rgba(40, 40, 40, 0.5);
+    --mine-shaft-o-75: rgba(40, 40, 40, 0.75);
     /* Main */
     --voodoo: #5C3A5D;
     --voodoo-dark: #4A304B;
@@ -54,6 +56,7 @@
     --window-shadow-color: var(--white-o-25);
     /* Widgets */
     --widget-hover-bg-color: var(--mine-shaft-o-50);
+    --widget-options-bg-color: var(--mine-shaft-o-75);
 }
 
 /* Color names from: https://chir.ag/projects/name-that-color */

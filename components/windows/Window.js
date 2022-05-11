@@ -1,10 +1,9 @@
 import React from 'react'
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 
-
 const Window = (props) => {
-    let { title, children, className, isOpenned, width, zIndex, closeWindow } = props
+    let { title, children, className, width, zIndex, closeWindow } = props
 
     let classText = 'window';
     if (className) classText += ' ' + className;
@@ -13,11 +12,10 @@ const Window = (props) => {
     const handleClick = () => { }
 
     return (
-        isOpenned &&
         ReactDOM.createPortal(
-            <Draggable
-                nodeRef={nodeRef}
-            >
+            // <Draggable
+            //     nodeRef={nodeRef}
+            // >
                 <div ref={nodeRef}
                     className={classText}
                     style={{ width: width, zIndex: zIndex ?? 10 }}
@@ -36,7 +34,7 @@ const Window = (props) => {
                         {children}
                     </div>
                 </div>
-            </Draggable>
+            // </Draggable>
             , document.querySelector("#main-container")
         )
     )

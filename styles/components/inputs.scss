@@ -16,11 +16,48 @@ select {
     }
 
     &::placeholder {
-        color: #cccccc;
-        font-family: var(--main-font-familiy);
+        // color: #cccccc;
+        font-family: var(--text-font);
     }
 }
 
-input[type=color]{
+input[type='color']{
     cursor: pointer;
+}
+
+input[type='file'] {
+    width: 120px;
+    padding: 0;
+    font-family: var(--text-font);
+    color: var(--text-light-color);
+
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    &::before {
+        height: 35px;
+        content: "Select an image";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        cursor: pointer;
+        font-family: var(--text-font);
+        color: var(--text-light-color);
+        border: 1px solid rgb(255, 255, 255, 0.5);
+        border-radius: var(--input-border-radius);
+    }
+    &:hover::before {
+        border-color: rgb(255, 255, 255);
+    }
+    &:active {
+        outline: 0;
+        transition: all 1s;
+    }
+    // &:active::before {
+    //     background: -webkit-linear-gradient(top, #e3e3e3, #9976ce);
+    // }
 }

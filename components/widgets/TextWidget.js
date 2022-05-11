@@ -1,13 +1,25 @@
 import React from 'react'
 import Widget from './Widget';
+import { useDispatch, useSelector } from 'react-redux'
+import { setTextWidgetOpenned } from '../../app/actions';
 
-const TextWidget = ({ className, isOpenned, closeWidget }) => {
+const TextWidget = ({ className }) => {
+  const dispatch = useDispatch();
+
   let classText = 'text-widget';
   if (className) classText += ' ' + className;
 
+  const { value, isOpenned } = useSelector(state => state.textWidget)
+  
+  const onClickClose = () => {
+    // console.log("🚀")
+    dispatch(setTextWidgetOpenned(false));
+  }
+
   return (
-    <Widget className={classText} isOpenned={isOpenned} closeWidget={closeWidget}>
-      The dev&#39;s favorite corner.
+    isOpenned &&
+    <Widget className={classText} onClickClose={onClickClose}>
+      {value}
     </Widget>
   )
 }

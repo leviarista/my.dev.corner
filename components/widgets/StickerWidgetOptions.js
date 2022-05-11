@@ -4,18 +4,19 @@ import { setTextWidgetOpenned, setTextWidgetValue } from '../../app/actions';
 import Button from '../buttons/Button'
 import WidgetOptions from './WidgetOptions'
 
-const TextWidgetOptions = ({ isOpenned, toggleWidgetOption, toggleWidget }) => {
+const StickerWidgetOptions = ({ isOpenned, toggleWidgetOption, toggleWidget }) => {
     const dispatch = useDispatch();
     const input = useRef(null);
 
     const onClickAdd = () => {
-        const text = input.current.value.trim();
-        if (text !== "") {
-            // console.log("🚀")
-            dispatch(setTextWidgetOpenned(true));
-            dispatch(setTextWidgetValue(text));
-            toggleWidgetOption();
-        }
+        const value = input.current.value.trim();
+        console.log("🚀 ~ file: StickerWidgetOptions.js ~ line 13 ~ onClickAdd ~ value", value)
+        // if (text !== "") {
+        //     // console.log("🚀")
+        //     dispatch(setTextWidgetOpenned(true));
+        //     dispatch(setTextWidgetValue(text));
+        //     toggleWidgetOption();
+        // }
     }
 
     return (
@@ -25,9 +26,8 @@ const TextWidgetOptions = ({ isOpenned, toggleWidgetOption, toggleWidget }) => {
                 {/* <label htmlFor='text-widget-input'>Text</label> */}
                 &nbsp;&nbsp;
                 <input ref={input}
-                    type='text' id='text-widget-input' name='text-widget-input'
-                    placeholder='Text'
-                    style={{ width: '80%' }}
+                    type='file' id='sticker-widget-input' name='sticker-widget-input'
+                    // style={{ width: '80%' }}
                 />
                 <br />
             </div>
@@ -38,4 +38,4 @@ const TextWidgetOptions = ({ isOpenned, toggleWidgetOption, toggleWidget }) => {
     )
 }
 
-export default TextWidgetOptions
+export default StickerWidgetOptions
