@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setTextWidgetOpenned, setTextWidgetValue } from '../../app/actions';
+import { setTextWidgetOpenned, setTextWidgetPosition, setTextWidgetValue } from '../../app/actions';
 import Button from '../buttons/Button'
 import WidgetOptions from './WidgetOptions'
 
@@ -8,12 +8,21 @@ const TextWidgetOptions = ({ isOpenned, toggleWidgetOption, toggleWidget }) => {
     const dispatch = useDispatch();
     const input = useRef(null);
 
+    const textWidget = useSelector(state => state.textWidget);
+
     const onClickAdd = () => {
         const text = input.current.value.trim();
         if (text !== "") {
             // console.log("🚀")
+            
+            textWidget.isOpenned = true;
+            textWidget.value = text;
+            textWidget.position =  { x: 0, y: 0 };
+            localStorage.setItem('textWidget', JSON.stringify(textWidget));
             dispatch(setTextWidgetOpenned(true));
             dispatch(setTextWidgetValue(text));
+            dispatch(setTextWidgetPosition(textWidget.position));
+            
             toggleWidgetOption();
         }
     }

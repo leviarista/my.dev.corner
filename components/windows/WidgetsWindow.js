@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setAnalogClockWidgetOpenned, setStickerWidgetOpenned } from '../../app/actions'
-import Button from '../buttons/Button'
-import AnalogClockWidget from '../widgets/AnalogClockWidget'
-import StickerWidget from '../widgets/StickerWidget'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setStickerWidgetOpenned, setStickerWidgetPosition } from '../../app/actions'
 import StickerWidgetOptions from '../widgets/StickerWidgetOptions'
 import TextWidgetOptions from '../widgets/TextWidgetOptions'
 import Window from './Window'
@@ -14,6 +11,9 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
     const [showTextWidgetOptions, setShowTextWidgetOptions] = useState(false);
     const [showStickerWidgetOptions, setShowStickerWidgetOptions] = useState(false);
 
+    const analogClockWidget = useSelector(state => state.analogClockWidget);
+    const stickerWidget = useSelector(state => state.stickerWidget);
+
     const handleClickWidgetOption = (id) => {
         hideAll();
         switch (id) {
@@ -22,10 +22,18 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
                 break;
             case 'sticker':
                 // setShowStickerWidgetOptions(!showStickerWidgetOptions);
+                stickerWidget.isOpenned = true;
+                stickerWidget.position =  { x: 0, y: 0 };
+                localStorage.setItem('stickerWidget', JSON.stringify(stickerWidget));
                 dispatch(setStickerWidgetOpenned(true));
+                dispatch(setStickerWidgetPosition(stickerWidget.position));
                 break;
             case 'analogClock':
+                analogClockWidget.isOpenned = true;
+                analogClockWidget.position =  { x: 0, y: 0 };
+                localStorage.setItem('analogClockWidget', JSON.stringify(analogClockWidget));
                 dispatch(setAnalogClockWidgetOpenned(true));
+                dispatch(setAnalogClockWidgetPosition(analogClockWidget.position));
                 break;
             default:
                 break;

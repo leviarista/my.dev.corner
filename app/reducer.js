@@ -3,11 +3,13 @@ function reducer(state = {
         id: 'text',
         isOpenned: false,
         value: '',
+        position: { x: 0, y: 0 },
     },
     stickerWidget: {
         id: 'sticker',
         isOpenned: false,
         value: '',
+        position: { x: 0, y: 0 },
     },
     analogClockWidget: {
         id: 'analogClock',
@@ -32,6 +34,14 @@ function reducer(state = {
                     value: action.payload
                 }
             }
+        case 'SET_TEXT_WIDGET_POSITION':
+            return {
+                ...state,
+                textWidget: {
+                    ...state.textWidget,
+                    position: action.payload
+                }
+            }
         case 'SET_STICKER_WIDGET_OPENNED':
             return {
                 ...state,
@@ -44,8 +54,16 @@ function reducer(state = {
             return {
                 ...state,
                 stickerWidget: {
-                    ...state.textWidget,
+                    ...state.stickerWidget,
                     value: action.payload
+                }
+            }
+        case 'SET_STICKER_WIDGET_POSITION':
+            return {
+                ...state,
+                stickerWidget: {
+                    ...state.stickerWidget,
+                    position: action.payload
                 }
             }
         case 'SET_ANALOG_CLOCK_WIDGET_OPENNED':

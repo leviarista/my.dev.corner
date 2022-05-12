@@ -65,6 +65,21 @@ header {
             margin-right: 5px;
         }
     }
+
+    .more-options-container {
+        position: absolute;
+        top: calc(var(--vertical-margin) + 40px);
+        right: var(--horizontal-margin);
+        width: 150px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: var(--window-bg-color);
+        border-radius: var(--border-radius);
+    }
 }
 
 .settings-window {

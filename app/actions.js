@@ -12,6 +12,13 @@ export const setTextWidgetValue = (data) => {
     }
 }
 
+export const setTextWidgetPosition = (data) => {
+    return {
+        type: 'SET_TEXT_WIDGET_POSITION',
+        payload: data
+    }
+}
+
 export const setStickerWidgetOpenned = (data) => {
     return {
         type: 'SET_STICKER_WIDGET_OPENNED',
@@ -22,6 +29,13 @@ export const setStickerWidgetOpenned = (data) => {
 export const setStickerWidgetValue = (data) => {
     return {
         type: 'SET_STICKER_WIDGET_VALUE',
+        payload: data
+    }
+}
+
+export const setStickerWidgetPosition = (data) => {
+    return {
+        type: 'SET_STICKER_WIDGET_POSITION',
         payload: data
     }
 }

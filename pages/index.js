@@ -8,7 +8,7 @@ import WidgetsWindow from '../components/windows/WidgetsWindow';
 import StickerWidget from '../components/widgets/StickerWidget';
 import MainBackground from '../components/MainBackground';
 import Meta from '../components/Meta';
-import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setStickerWidgetOpenned, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetValue } from '../app/actions';
+import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setStickerWidgetOpenned, setStickerWidgetPosition, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetPosition, setTextWidgetValue } from '../app/actions';
 import { useDispatch } from 'react-redux';
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
 
@@ -44,22 +44,12 @@ export default function Home() {
   const [backgroundType, setBackgroundType] = useState('color');
   const [backgroundValue, setBackgroundValue] = useState('var(--bg-default)');
 
-  /* *********************************** Widgets *********************************** */
-
-  const [textWidgetState, setTextWidgetState] = useState(false);
-
-  const toggleWidget = (id, value) => {
-    if (id === 'text') {
-      setTextWidgetState(value ?? !textWidgetState);
-    }
-  }
 
   /* *********************************** *** *********************************** */
 
   useEffect(() => {
     // Background
     let background = localStorage.getItem('_background');
-    console.log("🚀 ~ file: index.js ~ line 62 ~ useEffect ~ background", background)
     if (background) {
       const { type, value } = JSON.parse(background);
       setBackgroundType(type);
@@ -68,25 +58,53 @@ export default function Home() {
       setBackgroundType('video');
       setBackgroundValue('/videos/defaultVideoBg.webm');
     }
-    // Default Widgets
-    setTextWidgetState(true);
-    dispatch(setTextWidgetOpenned(true));
-    dispatch(setTextWidgetValue("The dev's favorite corner."));
+
+    // Widgets
 
     dispatch(setStickerWidgetValue('/img/stickers/headphones-cat.gif'));
     dispatch(setStickerWidgetOpenned(true));
 
-    dispatch(setAnalogClockWidgetOpenned(true));
-    let analogClockWidget = localStorage.getItem('analogClock');
+    let analogClockWidget = localStorage.getItem('analogClockWidget');
     if (analogClockWidget) {
       analogClockWidget = JSON.parse(analogClockWidget);
-      // console.log("🚀 ", analogClockWidget)
+      dispatch(setAnalogClockWidgetOpenned(analogClockWidget.isOpenned));
       dispatch(setAnalogClockWidgetPosition(analogClockWidget.position));
-      // dispatch(setAnalogClockWidgetPosition({ x: 100, y: 0 }));
+    } else {
+      dispatch(setAnalogClockWidgetOpenned(true));
+      dispatch(setAnalogClockWidgetPosition({ x: (window.innerWidth - 240), y: (window.innerHeight - 245) }));
+    }
+
+    let textWidget = localStorage.getItem('textWidget');
+    if (textWidget) {
+      textWidget = JSON.parse(textWidget);
+      dispatch(setTextWidgetPosition(textWidget.position));
+      dispatch(setTextWidgetOpenned(textWidget.isOpenned));
+      dispatch(setTextWidgetValue(textWidget.value));
+    } else {
+      dispatch(setTextWidgetOpenned(true));
+      dispatch(setTextWidgetValue("The dev's favorite corner."));
+      dispatch(setTextWidgetPosition({ x: 145, y: (window.innerHeight - 85) }));
+    }
+
+    let stickerWidget = localStorage.getItem('stickerWidget');
+    if (stickerWidget) {
+      stickerWidget = JSON.parse(stickerWidget);
+      dispatch(setStickerWidgetOpenned(stickerWidget.isOpenned));
+      dispatch(setStickerWidgetPosition(stickerWidget.position));
+    } else {
+      dispatch(setStickerWidgetOpenned(true));
+      dispatch(setStickerWidgetPosition({ x: (window.innerWidth - 400), y: (window.innerHeight - 220) }));
     }
   }, [])
 
   /* *********************************** *** *********************************** */
+
+  const [showMoreOptions, setShowMoreOptions] = useState(false);
+
+  const resetSettings = () => {
+    localStorage.clear();
+    location.reload();
+  }
 
   return (
     <>
@@ -100,7 +118,7 @@ export default function Home() {
           <div className='logo'>
             <Image src="/img/my.dev.corner-logo.png" alt="my dev corner logo" width={150} height={150} />
           </div>
-          <TextWidget className={'slogan-text-widget'} />
+          <TextWidget />
         </header>
 
         <MainBackground type={backgroundType} value={backgroundValue} />
@@ -112,10 +130,27 @@ export default function Home() {
           <Button type={'icon'} variant={'primary'} handleClick={handleClickTuneButton}>
             <img src='/img/icons/tune.svg' />
           </Button>
-          <Button type={'icon'} variant={'primary'}>
+          <Button type={'icon'} variant={'primary'} handleClick={() => setShowMoreOptions(!showMoreOptions)}>
             <img src='/img/icons/more.svg' />
           </Button>
         </div>
+
+        {showMoreOptions &&
+          <div className='more-options-container'>
+            <a href='https://github.com/leviarista/my.dev.corner'
+              className='btn-link'
+              rel='noopenner noreferrer' target={'_blank'}
+            >
+              Github
+            </a>
+            <a href='#'
+              className='btn-link'
+              onClick={() => resetSettings()}
+            >
+              Reset settings
+            </a>
+          </div>
+        }
 
         <div id="main-container"></div>
 
@@ -131,7 +166,6 @@ export default function Home() {
         <WidgetsWindow
           isOpenned={widgetsWindowOpened}
           closeWidgetsWindow={closeWidgetsWindow}
-          toggleWidget={toggleWidget}
         />
       </main>
     </>
