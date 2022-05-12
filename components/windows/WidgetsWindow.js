@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setStickerWidgetOpenned, setStickerWidgetPosition } from '../../app/actions'
+import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setDevTunesFMWidgetOpenned, setStickerWidgetOpenned, setStickerWidgetPosition } from '../../app/actions'
 import StickerWidgetOptions from '../widgets/StickerWidgetOptions'
 import TextWidgetOptions from '../widgets/TextWidgetOptions'
 import Window from './Window'
@@ -13,6 +13,7 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 
     const analogClockWidget = useSelector(state => state.analogClockWidget);
     const stickerWidget = useSelector(state => state.stickerWidget);
+    const devTunesFMWidget = useSelector(state => state.devTunesFMWidget);
 
     const handleClickWidgetOption = (id) => {
         hideAll();
@@ -23,17 +24,23 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
             case 'sticker':
                 // setShowStickerWidgetOptions(!showStickerWidgetOptions);
                 stickerWidget.isOpenned = true;
-                stickerWidget.position =  { x: 0, y: 0 };
+                stickerWidget.position = { x: 0, y: 0 };
                 localStorage.setItem('stickerWidget', JSON.stringify(stickerWidget));
                 dispatch(setStickerWidgetOpenned(true));
                 dispatch(setStickerWidgetPosition(stickerWidget.position));
                 break;
             case 'analogClock':
                 analogClockWidget.isOpenned = true;
-                analogClockWidget.position =  { x: 0, y: 0 };
+                analogClockWidget.position = { x: 0, y: 0 };
                 localStorage.setItem('analogClockWidget', JSON.stringify(analogClockWidget));
                 dispatch(setAnalogClockWidgetOpenned(true));
                 dispatch(setAnalogClockWidgetPosition(analogClockWidget.position));
+                break;
+            case 'devTunesFM':
+                devTunesFMWidget.isOpenned = true;
+                devTunesFMWidget.position = { x: 0, y: 0 };
+                localStorage.setItem('devTunesFMWidget', JSON.stringify(devTunesFMWidget));
+                dispatch(setDevTunesFMWidgetOpenned(true));
                 break;
             default:
                 break;
@@ -63,8 +70,8 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
                         <div className='widget-option' onClick={() => handleClickWidgetOption('text')}>Text</div>
                         <div className='widget-option' onClick={() => handleClickWidgetOption('sticker')}>Sticker</div>
                         <div className='widget-option' onClick={() => handleClickWidgetOption('analogClock')}>Clock</div>
-                        {/* <div className='widget-option' onClick={() => handleClickWidgetOption()}>DEV posts</div>
-                        <div className='widget-option' onClick={() => handleClickWidgetOption()}>Hashnode posts</div> */}
+                        {/* <div className='widget-option' onClick={() => handleClickWidgetOption('devToPosts')}>DEV posts</div> */}
+                        <div className='widget-option' onClick={() => handleClickWidgetOption('devTunesFM')}>DevTunes FM</div>
                     </div>
                 </div>
             </Window>

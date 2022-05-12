@@ -53,3 +53,10 @@ export const setAnalogClockWidgetPosition = (data) => {
         payload: data
     }
 }
+
+export const setDevTunesFMWidgetOpenned = (data) => {
+    return {
+        type: 'SET_DEV_TUNES_FM_WIDGET_OPENNED',
+        payload: data
+    }
+}

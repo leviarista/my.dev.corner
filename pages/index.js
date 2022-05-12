@@ -1,16 +1,16 @@
-import Image from 'next/image'
-import React, { Suspense, useEffect, useState } from 'react';
-import TextWidget from '../components/widgets/TextWidget';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setDevTunesFMWidgetOpenned, setStickerWidgetOpenned, setStickerWidgetPosition, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetPosition, setTextWidgetValue } from '../app/actions';
 import Button from '../components/buttons/Button';
-import Window from '../components/windows/Window';
-import SettingsWindow from '../components/windows/SettingsWindow';
-import WidgetsWindow from '../components/windows/WidgetsWindow';
-import StickerWidget from '../components/widgets/StickerWidget';
 import MainBackground from '../components/MainBackground';
 import Meta from '../components/Meta';
-import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setStickerWidgetOpenned, setStickerWidgetPosition, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetPosition, setTextWidgetValue } from '../app/actions';
-import { useDispatch } from 'react-redux';
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
+import DevTunesFMWidget from '../components/widgets/DevTunesFMWidget';
+import StickerWidget from '../components/widgets/StickerWidget';
+import TextWidget from '../components/widgets/TextWidget';
+import SettingsWindow from '../components/windows/SettingsWindow';
+import WidgetsWindow from '../components/windows/WidgetsWindow';
 
 export default function Home() {
 
@@ -95,6 +95,8 @@ export default function Home() {
       dispatch(setStickerWidgetOpenned(true));
       dispatch(setStickerWidgetPosition({ x: (window.innerWidth - 400), y: (window.innerHeight - 220) }));
     }
+
+    dispatch(setDevTunesFMWidgetOpenned(true));
   }, [])
 
   /* *********************************** *** *********************************** */
@@ -156,6 +158,7 @@ export default function Home() {
 
         <StickerWidget className={'sticker-widget'} />
         <AnalogClockWidget />
+        <DevTunesFMWidget />
 
         <SettingsWindow
           isOpenned={settingsWindowOpened}

@@ -16,6 +16,11 @@ function reducer(state = {
         isOpenned: false,
         position: { x: 0, y: 0 },
     },
+    devTunesFMWidget: {
+        id: 'devTunesFM',
+        isOpenned: false,
+        position: { x: 0, y: 0 },
+    },
 }, action) {
     switch (action.type) {
         case 'SET_TEXT_WIDGET_OPENNED':
@@ -80,6 +85,14 @@ function reducer(state = {
                 analogClockWidget: {
                     ...state.analogClockWidget,
                     position: action.payload
+                }
+            }
+        case 'SET_DEV_TUNES_FM_WIDGET_OPENNED':
+            return {
+                ...state,
+                devTunesFMWidget: {
+                    ...state.devTunesFMWidget,
+                    devToPostsWidget: action.payload
                 }
             }
         default:
