@@ -6,8 +6,7 @@ function Meta(props) {
     return (
         <Head>
             <title>My Dev Corner {title && " | " + title}</title>
-            <meta name="description" content={description ?? "CSS art of endangered species"} />
-            <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+            <meta name="description" content={description ?? "The dev's favorite corner."} />
             <link rel="icon" href="/favicon.ico" />
         </Head>
     )
