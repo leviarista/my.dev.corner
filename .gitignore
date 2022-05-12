@@ -31,7 +31,8 @@ yarn-error.log*
 # vercel
 .vercel
 
-# tmp
+# 
+.env
 /public/img/stickers/*
 /public/img/bg*
-/public/videos/*
+/public/videos/bg*

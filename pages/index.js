@@ -58,8 +58,16 @@ export default function Home() {
 
   useEffect(() => {
     // Background
-    setBackgroundType('image');
-    setBackgroundValue('url("/img/bg-2.jpg")');
+    let background = localStorage.getItem('_background');
+    console.log("🚀 ~ file: index.js ~ line 62 ~ useEffect ~ background", background)
+    if (background) {
+      const { type, value } = JSON.parse(background);
+      setBackgroundType(type);
+      setBackgroundValue(value);
+    } else {
+      setBackgroundType('video');
+      setBackgroundValue('/videos/defaultVideoBg.webm');
+    }
     // Default Widgets
     setTextWidgetState(true);
     dispatch(setTextWidgetOpenned(true));
