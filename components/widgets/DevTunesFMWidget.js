@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'react-clock/dist/Clock.css';
 import Clock from 'react-clock/dist/umd/Clock';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAnalogClockWidgetOpenned, setDevToPostsWidgetOpenned } from '../../app/actions';
+import { setAnalogClockWidgetOpenned, setDevToPostsWidgetOpenned, setDevTunesFMWidgetOpenned } from '../../app/actions';
 import Widget from './Widget';
 
 const DevTunesFMWidget = () => {
@@ -14,7 +14,7 @@ const DevTunesFMWidget = () => {
     const onClickClose = () => {
         devTunesFMWidget.isOpenned = false;
         localStorage.setItem('devTunesFMWidget', JSON.stringify(devTunesFMWidget));
-        dispatch(setDevToPostsWidgetOpenned(false));
+        dispatch(setDevTunesFMWidgetOpenned(false));
     }
 
     const onStop = (e) => {

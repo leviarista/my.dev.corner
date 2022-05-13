@@ -22,13 +22,16 @@ const SettingsWindow = ({ isOpenned, closeSettingsWindow, setBackgroundType, set
         localStorage.setItem('_background', JSON.stringify({ type: 'video', value: value }));
     }
 
-    const [bgImages, setBgImages] = useState(['/img/defaultImageBg.jpg']);
-    const [bgImagesThumbnails, setBgImagesThumbnails] = useState(['/img/defaultImageBgThumbnail.jpg']);
+    // Default image backgrounds
+    const [bgImages, setBgImages] = useState(['/img/_1.jpg', '/img/_2.jpg', '/img/_3.jpg', '/img/_4.jpg', '/img/defaultImageBg.jpg']);
+    const [bgImagesThumbnails, setBgImagesThumbnails] = useState(['/img/_1.jpg', '/img/_2.jpg', '/img/_3.jpg', '/img/_4.jpg', '/img/defaultImageBgThumbnail.jpg',]);
 
-    const [bgVideos, setBgVideos] = useState(['/videos/defaultVideoBg.webm']);
-    const [bgVideosThumbnails, setBgVideosThumbnails] = useState(['/img/defaultImageBgThumbnail.jpg']);
+    // Default video backgrounds
+    const [bgVideos, setBgVideos] = useState(['/videos/_2.webm', '/videos/_4.webm', '/videos/defaultVideoBg.webm']);
+    const [bgVideosThumbnails, setBgVideosThumbnails] = useState(['/img/_2.jpg', '/img/_4.jpg', '/img/defaultImageBgThumbnail.jpg']);
 
     useEffect(() => {
+        // Getting image backgrounds from Appwrite
         const bgImagesBucketId = process.env.NEXT_PUBLIC_APPWRITE_BG_IMAGES_BUCKET;
         listFiles(bgImagesBucketId)
             .then(function (response) {
@@ -45,6 +48,7 @@ const SettingsWindow = ({ isOpenned, closeSettingsWindow, setBackgroundType, set
                 console.log(error);
             });
 
+        // Getting video backgrounds from Appwrite
         const bgVideosBucketId = process.env.NEXT_PUBLIC_APPWRITE_BG_VIDEOS_BUCKET;
         listFiles(bgVideosBucketId)
             .then(function (response) {
