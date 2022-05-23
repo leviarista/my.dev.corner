@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setDevTunesFMWidgetOpenned, setStickerWidgetOpenned, setStickerWidgetPosition, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetPosition, setTextWidgetValue } from '../app/actions';
+import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setDevTunesFMWidgetOpenned, setDevTunesFMWidgetPosition, setFreeCodeCampRadioWidgetOpenned, setFreeCodeCampRadioWidgetPosition, setStickerWidgetOpenned, setStickerWidgetPosition, setStickerWidgetValue, setTextWidgetOpenned, setTextWidgetPosition, setTextWidgetValue, setXTeamRadioWidgetOpenned, setXTeamRadioWidgetPosition } from '../app/actions';
 import Button from '../components/buttons/Button';
 import MainBackground from '../components/MainBackground';
 import Meta from '../components/Meta';
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
 import DevTunesFMWidget from '../components/widgets/DevTunesFMWidget';
+import FreeCodeCampRadioWidget from '../components/widgets/FreeCodeCampRadioWidget';
 import StickerWidget from '../components/widgets/StickerWidget';
 import TextWidget from '../components/widgets/TextWidget';
+import XTeamRadioWidget from '../components/widgets/XTeamRadioWidget';
 import SettingsWindow from '../components/windows/SettingsWindow';
 import WidgetsWindow from '../components/windows/WidgetsWindow';
 
@@ -62,7 +64,7 @@ export default function Home() {
     // Widgets
 
     dispatch(setStickerWidgetValue('/img/stickers/headphones-cat.gif'));
-    dispatch(setStickerWidgetOpenned(true));
+    // dispatch(setStickerWidgetOpenned(true));
 
     let analogClockWidget = localStorage.getItem('analogClockWidget');
     if (analogClockWidget) {
@@ -96,7 +98,32 @@ export default function Home() {
       dispatch(setStickerWidgetPosition({ x: (window.innerWidth - 400), y: (window.innerHeight - 220) }));
     }
 
-    dispatch(setDevTunesFMWidgetOpenned(true));
+    let devTunesFMWidget = localStorage.getItem('devTunesFMWidget');
+    if (devTunesFMWidget) {
+      devTunesFMWidget = JSON.parse(devTunesFMWidget);
+      dispatch(setDevTunesFMWidgetOpenned(devTunesFMWidget.isOpenned));
+      dispatch(setDevTunesFMWidgetPosition(devTunesFMWidget.position));
+    } else {
+      dispatch(setDevTunesFMWidgetOpenned(true));
+    }
+    
+    let xTeamRadioWidget = localStorage.getItem('xTeamRadioWidget');
+    if (xTeamRadioWidget) {
+      xTeamRadioWidget = JSON.parse(xTeamRadioWidget);
+      dispatch(setXTeamRadioWidgetOpenned(xTeamRadioWidget.isOpenned));
+      dispatch(setXTeamRadioWidgetPosition(xTeamRadioWidget.position));
+    } else {
+      dispatch(setXTeamRadioWidgetOpenned(true));
+    }
+    
+    let freeCodeCampRadioWidget = localStorage.getItem('freeCodeCampRadioWidget');
+    if (freeCodeCampRadioWidget) {
+      freeCodeCampRadioWidget = JSON.parse(freeCodeCampRadioWidget);
+      dispatch(setFreeCodeCampRadioWidgetOpenned(freeCodeCampRadioWidget.isOpenned));
+      dispatch(setFreeCodeCampRadioWidgetPosition(freeCodeCampRadioWidget.position));
+    } else {
+      dispatch(setFreeCodeCampRadioWidgetOpenned(true));
+    }
   }, [])
 
   /* *********************************** *** *********************************** */
@@ -159,6 +186,8 @@ export default function Home() {
         <StickerWidget className={'sticker-widget'} />
         <AnalogClockWidget />
         <DevTunesFMWidget />
+        <XTeamRadioWidget />
+        <FreeCodeCampRadioWidget />
 
         <SettingsWindow
           isOpenned={settingsWindowOpened}

@@ -19,3 +19,12 @@
 .widget:hover .btn-close-window {
     display: flex;
 }
+
+.windowed {
+    background-color: var(--widget-hover-bg-color);
+    border: solid var(--border-color) 1px;
+
+    .btn-close-window {
+        display: flex;
+    }
+}

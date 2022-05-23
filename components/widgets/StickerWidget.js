@@ -14,7 +14,7 @@ const StickerWidget = ({ className }) => {
 
   const onClickClose = () => {
     stickerWidget.isOpenned = false;
-    localStorage.setItem('analogClockWidget', JSON.stringify(stickerWidget));
+    localStorage.setItem('stickerWidget', JSON.stringify(stickerWidget));
     dispatch(setStickerWidgetOpenned(false));
   }
 

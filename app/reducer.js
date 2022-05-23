@@ -21,6 +21,16 @@ function reducer(state = {
         isOpenned: false,
         position: { x: 0, y: 0 },
     },
+    xTeamRadioWidget: {
+        id: 'xTeamRadio',
+        isOpenned: false,
+        position: { x: 0, y: 0 },
+    },
+    freeCodeCampRadioWidget: {
+        id: 'freeCodeCampRadio',
+        isOpenned: false,
+        position: { x: 0, y: 0 },
+    },
 }, action) {
     switch (action.type) {
         case 'SET_TEXT_WIDGET_OPENNED':
@@ -92,7 +102,47 @@ function reducer(state = {
                 ...state,
                 devTunesFMWidget: {
                     ...state.devTunesFMWidget,
-                    devToPostsWidget: action.payload
+                    isOpenned: action.payload
+                }
+            }
+        case 'SET_DEV_TUNES_FM_WIDGET_POSITION':
+            return {
+                ...state,
+                devTunesFMWidget: {
+                    ...state.devTunesFMWidget,
+                    position: action.payload
+                }
+            }
+        case 'SET_X_TEAM_RADIO_WIDGET_OPENNED':
+            return {
+                ...state,
+                xTeamRadioWidget: {
+                    ...state.xTeamRadioWidget,
+                    isOpenned: action.payload
+                }
+            }
+        case 'SET_X_TEAM_RADIO_WIDGET_POSITION':
+            return {
+                ...state,
+                xTeamRadioWidget: {
+                    ...state.xTeamRadioWidget,
+                    position: action.payload
+                }
+            }
+        case 'SET_FREE_CODE_CAMP_RADIO_WIDGET_OPENNED':
+            return {
+                ...state,
+                freeCodeCampRadioWidget: {
+                    ...state.freeCodeCampRadioWidget,
+                    isOpenned: action.payload
+                }
+            }
+        case 'SET_FREE_CODE_CAMP_RADIO_WIDGET_POSITION':
+            return {
+                ...state,
+                freeCodeCampRadioWidget: {
+                    ...state.freeCodeCampRadioWidget,
+                    position: action.payload
                 }
             }
         default:

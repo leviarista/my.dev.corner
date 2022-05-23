@@ -60,3 +60,38 @@ export const setDevTunesFMWidgetOpenned = (data) => {
         payload: data
     }
 }
+
+export const setDevTunesFMWidgetPosition = (data) => {
+    return {
+        type: 'SET_DEV_TUNES_FM_WIDGET_POSITION',
+        payload: data
+    }
+}
+
+export const setXTeamRadioWidgetOpenned = (data) => {
+    return {
+        type: 'SET_X_TEAM_RADIO_WIDGET_OPENNED',
+        payload: data
+    }
+}
+
+export const setXTeamRadioWidgetPosition = (data) => {
+    return {
+        type: 'SET_X_TEAM_RADIO_WIDGET_POSITION',
+        payload: data
+    }
+}
+
+export const setFreeCodeCampRadioWidgetOpenned = (data) => {
+    return {
+        type: 'SET_FREE_CODE_CAMP_RADIO_WIDGET_OPENNED',
+        payload: data
+    }
+}
+
+export const setFreeCodeCampRadioWidgetPosition = (data) => {
+    return {
+        type: 'SET_FREE_CODE_CAMP_RADIO_WIDGET_POSITION',
+        payload: data
+    }
+}

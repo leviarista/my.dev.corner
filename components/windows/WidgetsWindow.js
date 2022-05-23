@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setDevTunesFMWidgetOpenned, setStickerWidgetOpenned, setStickerWidgetPosition } from '../../app/actions'
+import { setAnalogClockWidgetOpenned, setAnalogClockWidgetPosition, setDevTunesFMWidgetOpenned, setDevTunesFMWidgetPosition, setFreeCodeCampRadioWidgetOpenned, setFreeCodeCampRadioWidgetPosition, setStickerWidgetOpenned, setStickerWidgetPosition, setXTeamRadioWidgetOpenned, setXTeamRadioWidgetPosition } from '../../app/actions'
 import StickerWidgetOptions from '../widgets/StickerWidgetOptions'
 import TextWidgetOptions from '../widgets/TextWidgetOptions'
 import Window from './Window'
@@ -14,6 +14,8 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
     const analogClockWidget = useSelector(state => state.analogClockWidget);
     const stickerWidget = useSelector(state => state.stickerWidget);
     const devTunesFMWidget = useSelector(state => state.devTunesFMWidget);
+    const xTeamRadioWidget = useSelector(state => state.xTeamRadioWidget);
+    const freeCodeCampRadioWidget = useSelector(state => state.freeCodeCampRadioWidget);
 
     const handleClickWidgetOption = (id) => {
         hideAll();
@@ -41,6 +43,21 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
                 devTunesFMWidget.position = { x: 0, y: 0 };
                 localStorage.setItem('devTunesFMWidget', JSON.stringify(devTunesFMWidget));
                 dispatch(setDevTunesFMWidgetOpenned(true));
+                dispatch(setDevTunesFMWidgetPosition(devTunesFMWidget.position));
+                break;
+            case 'xTeamRadio':
+                xTeamRadioWidget.isOpenned = true;
+                xTeamRadioWidget.position = { x: 0, y: 0 };
+                localStorage.setItem('xTeamRadioWidget', JSON.stringify(xTeamRadioWidget));
+                dispatch(setXTeamRadioWidgetOpenned(true));
+                dispatch(setXTeamRadioWidgetPosition(xTeamRadioWidget.position));
+                break;
+            case 'freeCodeCampRadio':
+                freeCodeCampRadioWidget.isOpenned = true;
+                freeCodeCampRadioWidget.position = { x: 0, y: 0 };
+                localStorage.setItem('freeCodeCampRadioWidget', JSON.stringify(freeCodeCampRadioWidget));
+                dispatch(setFreeCodeCampRadioWidgetOpenned(true));
+                dispatch(setFreeCodeCampRadioWidgetPosition(freeCodeCampRadioWidget.position));
                 break;
             default:
                 break;
@@ -72,6 +89,8 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
                         <div className='widget-option' onClick={() => handleClickWidgetOption('analogClock')}>Clock</div>
                         {/* <div className='widget-option' onClick={() => handleClickWidgetOption('devToPosts')}>DEV posts</div> */}
                         <div className='widget-option' onClick={() => handleClickWidgetOption('devTunesFM')}>DevTunes FM</div>
+                        <div className='widget-option' onClick={() => handleClickWidgetOption('xTeamRadio')}>X-Team Radio</div>
+                        <div className='widget-option' onClick={() => handleClickWidgetOption('freeCodeCampRadio')}>freeCodeCamp Radio</div>
                     </div>
                 </div>
             </Window>

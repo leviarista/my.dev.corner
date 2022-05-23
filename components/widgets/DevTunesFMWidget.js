@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'react-clock/dist/Clock.css';
-import Clock from 'react-clock/dist/umd/Clock';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAnalogClockWidgetOpenned, setDevToPostsWidgetOpenned, setDevTunesFMWidgetOpenned } from '../../app/actions';
+import { setDevTunesFMWidgetOpenned } from '../../app/actions';
 import Widget from './Widget';
 
 const DevTunesFMWidget = () => {
@@ -27,7 +26,7 @@ const DevTunesFMWidget = () => {
 
     return (
         isOpenned &&
-        <Widget onClickClose={onClickClose} onStop={onStop} position={position}>
+        <Widget className='windowed' onClickClose={onClickClose} onStop={onStop} position={position}>
             <iframe src='https://radio.madza.dev/' style={{ border: 'none', marginTop: '25px' }} height={400} ></iframe>
         </Widget>
 
