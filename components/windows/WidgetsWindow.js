@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	setAnalogClockWidgetOpenned,
 	setAnalogClockWidgetPosition,
+	setDevModeFMWidgetOpenned,
+	setDevModeFMWidgetPosition,
 	setDevTunesFMWidgetOpenned,
 	setDevTunesFMWidgetPosition,
 	setFreeCodeCampRadioWidgetOpenned,
@@ -27,6 +29,7 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 	const devTunesFMWidget = useSelector((state) => state.devTunesFMWidget);
 	const xTeamRadioWidget = useSelector((state) => state.xTeamRadioWidget);
 	const freeCodeCampRadioWidget = useSelector((state) => state.freeCodeCampRadioWidget);
+	const devModeFMWidget = useSelector((state) => state.devModeFMWidget);
 
 	const handleClickWidgetOption = (id) => {
 		hideAll();
@@ -72,6 +75,13 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 				);
 				dispatch(setFreeCodeCampRadioWidgetOpenned(true));
 				dispatch(setFreeCodeCampRadioWidgetPosition(freeCodeCampRadioWidget.position));
+				break;
+			case 'devModeFM':
+				devModeFMWidget.isOpenned = true;
+				devModeFMWidget.position = { x: 0, y: 0 };
+				localStorage.setItem('devModeFMWidget', JSON.stringify(devModeFMWidget));
+				dispatch(setDevModeFMWidgetOpenned(true));
+				dispatch(setDevModeFMWidgetPosition(devModeFMWidget.position));
 				break;
 			default:
 				break;
@@ -137,6 +147,22 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 							>
 								X-Team Radio
 								<img src='/img/widgets/xTeamRadioWidget.png' width={90} />
+							</div>
+							<div
+								className='widget-option'
+								onClick={() => handleClickWidgetOption('freeCodeCampRadio')}
+							>
+								freeCodeCamp Radio
+								<img src='/img/widgets/freeCodeCampRadioWidget.png' width={90} />
+							</div>
+						</div>
+						<div className='widgets-options-group center' style={{ padding: '10px' }}>
+							<div
+								className='widget-option'
+								onClick={() => handleClickWidgetOption('devModeFM')}
+							>
+								devMode.fm
+								<img src='/img/widgets/devModeFMWidget.png' width={150} />
 							</div>
 						</div>
 					</div>

@@ -19,8 +19,34 @@ const DevTunesFMWidget = () => {
 			widget={devTunesFMWidget}
 			className='windowed'
 			onClickClose={onClickClose}
+			title={
+				<>
+					<a
+						className='btn-link'
+						href='https://radio.madza.dev/'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						DevTunes FM
+					</a>
+					by
+					<a
+						className='btn-link'
+						href='https://www.madza.dev/'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						Madza
+					</a>
+				</>
+			}
 		>
-			<iframe src='https://radio.madza.dev/' style={{ border: 'none' }} height={400}></iframe>
+			<iframe
+				src='https://radio.madza.dev/'
+				style={{ border: 'none' }}
+				width={340}
+				height={420}
+			></iframe>
 		</Widget>
 	);
 };

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import {
 	setAnalogClockWidgetOpenned,
 	setAnalogClockWidgetPosition,
+	setDevModeFMWidgetOpenned,
+	setDevModeFMWidgetPosition,
 	setDevTunesFMWidgetOpenned,
 	setDevTunesFMWidgetPosition,
 	setFreeCodeCampRadioWidgetOpenned,
@@ -21,6 +23,7 @@ import Button from '../components/buttons/Button';
 import MainBackground from '../components/MainBackground';
 import Meta from '../components/Meta';
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
+import DevModeFMWidget from '../components/widgets/DevModeFMWidget';
 import DevTunesFMWidget from '../components/widgets/DevTunesFMWidget';
 import FreeCodeCampRadioWidget from '../components/widgets/FreeCodeCampRadioWidget';
 import StickerWidget from '../components/widgets/StickerWidget';
@@ -147,6 +150,15 @@ export default function Home() {
 		} else {
 			dispatch(setFreeCodeCampRadioWidgetOpenned(false));
 		}
+
+		let devModeFMWidget = localStorage.getItem('devModeFMWidget');
+		if (devModeFMWidget) {
+			devModeFMWidget = JSON.parse(devModeFMWidget);
+			dispatch(setDevModeFMWidgetOpenned(devModeFMWidget.isOpenned));
+			dispatch(setDevModeFMWidgetPosition(devModeFMWidget.position));
+		} else {
+			dispatch(setDevModeFMWidgetOpenned(false));
+		}
 	}, []);
 
 	/* *********************************** *** *********************************** */
@@ -216,6 +228,7 @@ export default function Home() {
 				<DevTunesFMWidget />
 				<XTeamRadioWidget />
 				<FreeCodeCampRadioWidget />
+				<DevModeFMWidget />
 
 				<SettingsWindow
 					isOpenned={settingsWindowOpened}
