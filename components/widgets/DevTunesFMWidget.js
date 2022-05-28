@@ -5,32 +5,28 @@ import { setDevTunesFMWidgetOpenned } from '../../app/actions';
 import Widget from './Widget';
 
 const DevTunesFMWidget = () => {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    const devTunesFMWidget = useSelector(state => state.devTunesFMWidget);
-    const { isOpenned, position } = devTunesFMWidget;
+	const devTunesFMWidget = useSelector((state) => state.devTunesFMWidget);
 
-    const onClickClose = () => {
-        devTunesFMWidget.isOpenned = false;
-        localStorage.setItem('devTunesFMWidget', JSON.stringify(devTunesFMWidget));
-        dispatch(setDevTunesFMWidgetOpenned(false));
-    }
+	const onClickClose = () => {
+		dispatch(setDevTunesFMWidgetOpenned(false));
+	};
 
-    const onStop = (e) => {
-        devTunesFMWidget.position = {
-            x: e.layerX - e.offsetX,
-            y: e.layerY - e.offsetY,
-        };
-        localStorage.setItem('devTunesFMWidget', JSON.stringify(devTunesFMWidget));
-    }
+	return (
+		<Widget
+			name='devTunesFMWidget'
+			widget={devTunesFMWidget}
+			className='windowed'
+			onClickClose={onClickClose}
+		>
+			<iframe
+				src='https://radio.madza.dev/'
+				style={{ border: 'none', marginTop: '25px' }}
+				height={400}
+			></iframe>
+		</Widget>
+	);
+};
 
-    return (
-        isOpenned &&
-        <Widget className='windowed' onClickClose={onClickClose} onStop={onStop} position={position}>
-            <iframe src='https://radio.madza.dev/' style={{ border: 'none', marginTop: '25px' }} height={400} ></iframe>
-        </Widget>
-
-    );
-}
-
-export default DevTunesFMWidget
+export default DevTunesFMWidget;

@@ -5,32 +5,28 @@ import { setFreeCodeCampRadioWidgetOpenned } from '../../app/actions';
 import Widget from './Widget';
 
 const FreeCodeCampRadioWidget = () => {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    const freeCodeCampRadioWidget = useSelector(state => state.freeCodeCampRadioWidget);
-    const { isOpenned, position } = freeCodeCampRadioWidget;
+	const freeCodeCampRadioWidget = useSelector((state) => state.freeCodeCampRadioWidget);
 
-    const onClickClose = () => {
-        freeCodeCampRadioWidget.isOpenned = false;
-        localStorage.setItem('freeCodeCampRadioWidget', JSON.stringify(freeCodeCampRadioWidget));
-        dispatch(setFreeCodeCampRadioWidgetOpenned(false));
-    }
+	const onClickClose = () => {
+		dispatch(setFreeCodeCampRadioWidgetOpenned(false));
+	};
 
-    const onStop = (e) => {
-        freeCodeCampRadioWidget.position = {
-            x: e.layerX - e.offsetX,
-            y: e.layerY - e.offsetY,
-        };
-        localStorage.setItem('freeCodeCampRadioWidget', JSON.stringify(freeCodeCampRadioWidget));
-    }
+	return (
+		<Widget
+			name='freeCodeCampRadioWidget'
+			widget={freeCodeCampRadioWidget}
+			className='windowed'
+			onClickClose={onClickClose}
+		>
+			<iframe
+				src='https://coderadio.freecodecamp.org/'
+				style={{ border: 'none', marginTop: '25px' }}
+				height={450}
+			></iframe>
+		</Widget>
+	);
+};
 
-    return (
-        isOpenned &&
-        <Widget className='windowed' onClickClose={onClickClose} onStop={onStop} position={position}>
-            <iframe src='https://coderadio.freecodecamp.org/' style={{ border: 'none', marginTop: '25px' }} height={450} ></iframe>
-        </Widget>
-
-    );
-}
-
-export default FreeCodeCampRadioWidget
+export default FreeCodeCampRadioWidget;

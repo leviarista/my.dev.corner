@@ -1,8 +1,7 @@
-import React, { useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { setTextWidgetOpenned, setTextWidgetValue } from '../../app/actions';
-import Button from '../buttons/Button'
-import WidgetOptions from './WidgetOptions'
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import Button from '../buttons/Button';
+import WidgetOptions from './WidgetOptions';
 
 const StickerWidgetOptions = ({ isOpenned, toggleWidgetOption, toggleWidget }) => {
     const dispatch = useDispatch();

@@ -1,37 +1,31 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTextWidgetOpenned } from '../../app/actions';
 import Widget from './Widget';
-import { useDispatch, useSelector } from 'react-redux'
-import { setTextWidgetOpenned, setTextWidgetPosition } from '../../app/actions';
 
 const TextWidget = ({ className }) => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  let classText = 'text-widget';
-  if (className) classText += ' ' + className;
+	let classText = 'text-widget';
+	if (className) classText += ' ' + className;
 
-  const textWidget = useSelector(state => state.textWidget)
-  const { value, isOpenned, position } = textWidget
+	const textWidget = useSelector((state) => state.textWidget);
+	const { value } = textWidget;
 
-  const onClickClose = () => {
-    textWidget.isOpenned = false;
-    localStorage.setItem('textWidget', JSON.stringify(textWidget));
-    dispatch(setTextWidgetOpenned(false));
-  }
-  
-  const onStop = (e) => {
-    textWidget.position = {
-      x: e.layerX - e.offsetX,
-      y: e.layerY - e.offsetY,
-    };
-    localStorage.setItem('textWidget', JSON.stringify(textWidget));
-  }
+	const onClickClose = () => {
+		dispatch(setTextWidgetOpenned(false));
+	};
 
-  return (
-    isOpenned &&
-    <Widget className={classText} onClickClose={onClickClose} position={position} onStop={onStop}>
-      {value}
-    </Widget>
-  )
-}
+	return (
+		<Widget
+			name='textWidget'
+			widget={textWidget}
+			className={classText}
+			onClickClose={onClickClose}
+		>
+			{value}
+		</Widget>
+	);
+};
 
-export default TextWidget
+export default TextWidget;
