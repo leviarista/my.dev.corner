@@ -22,7 +22,7 @@ const XTeamRadioWidget = () => {
 		>
 			<iframe
 				src='https://radio.x-team.com/'
-				style={{ border: 'none', marginTop: '25px' }}
+				style={{ border: 'none' }}
 				width={350}
 				height={500}
 			></iframe>

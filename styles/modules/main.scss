@@ -97,11 +97,21 @@ header {
 }
 
 .widgets-window {
+    .widgets-options-group {
+        flex-wrap: wrap;
+    }
+
     .widget-option {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 5px;
         padding: 15px;
         background-color: var(--widget-hover-bg-color);
         border: solid transparent 1px;
         border-radius: var(--border-radius);
+        text-align: center;
         cursor: pointer;
 
         &:hover {
@@ -111,6 +121,10 @@ header {
 
         &:not(:last-child) {
             margin-right: 5px;
+        }
+
+        img {
+            margin-top: 10px;
         }
 
     }

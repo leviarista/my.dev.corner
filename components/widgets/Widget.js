@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
-import { useSelector } from 'react-redux';
 
-const Widget = ({ name, widget, width, children, className, onClickClose }) => {
+const Widget = ({ name, widget, width, children, className, onClickClose, title }) => {
 	let classText = 'widget';
 	if (className) classText += ' ' + className;
+
+	const isWindowed = classText.includes('windowed');
 
 	const { isOpenned, position } = widget;
 
@@ -21,7 +22,7 @@ const Widget = ({ name, widget, width, children, className, onClickClose }) => {
 
 	const handleClickClose = () => {
 		widget.isOpenned = false;
-		localStorage.setItem(name, JSON.stringify(textWidget));
+		localStorage.setItem(name, JSON.stringify(widget));
 		onClickClose();
 	};
 
@@ -32,8 +33,10 @@ const Widget = ({ name, widget, width, children, className, onClickClose }) => {
 				nodeRef={nodeRef}
 				defaultPosition={position ?? { x: 0, y: 0 }}
 				onStop={onStop}
+				handle={isWindowed ? '.handle-widget' : null}
 			>
 				<div ref={nodeRef} className={classText} style={{ width: width ?? 'fit-content' }}>
+					{isWindowed && <div className='widget-title handle-widget'>{title || ''}</div>}
 					<div className='btn-close-window' onClick={handleClickClose}>
 						<img src='/img/icons/close-circle.svg' />
 					</div>

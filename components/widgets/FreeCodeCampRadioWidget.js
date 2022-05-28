@@ -22,7 +22,7 @@ const FreeCodeCampRadioWidget = () => {
 		>
 			<iframe
 				src='https://coderadio.freecodecamp.org/'
-				style={{ border: 'none', marginTop: '25px' }}
+				style={{ border: 'none' }}
 				height={450}
 			></iframe>
 		</Widget>

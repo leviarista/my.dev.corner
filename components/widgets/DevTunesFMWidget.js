@@ -20,11 +20,7 @@ const DevTunesFMWidget = () => {
 			className='windowed'
 			onClickClose={onClickClose}
 		>
-			<iframe
-				src='https://radio.madza.dev/'
-				style={{ border: 'none', marginTop: '25px' }}
-				height={400}
-			></iframe>
+			<iframe src='https://radio.madza.dev/' style={{ border: 'none' }} height={400}></iframe>
 		</Widget>
 	);
 };
