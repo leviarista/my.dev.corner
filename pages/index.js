@@ -1,33 +1,15 @@
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-	setAnalogClockWidgetOpenned,
-	setAnalogClockWidgetPosition,
-	setDevModeFMWidgetOpenned,
-	setDevModeFMWidgetPosition,
-	setDevTunesFMWidgetOpenned,
-	setDevTunesFMWidgetPosition,
-	setFreeCodeCampRadioWidgetOpenned,
-	setFreeCodeCampRadioWidgetPosition,
-	setStickerWidgetOpenned,
-	setStickerWidgetPosition,
-	setStickerWidgetValue,
-	setTextWidgetOpenned,
-	setTextWidgetPosition,
-	setTextWidgetValue,
-	setXTeamRadioWidgetOpenned,
-	setXTeamRadioWidgetPosition,
-} from '../app/actions';
-import Button from '../components/buttons/Button';
+import Header from '../components/Header';
+import { initHomeStates } from '../components/helperFunctions';
 import MainBackground from '../components/MainBackground';
+import MainMenu from '../components/MainMenu';
 import Meta from '../components/Meta';
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
 import DevModeFMWidget from '../components/widgets/DevModeFMWidget';
 import DevTunesFMWidget from '../components/widgets/DevTunesFMWidget';
 import FreeCodeCampRadioWidget from '../components/widgets/FreeCodeCampRadioWidget';
 import StickerWidget from '../components/widgets/StickerWidget';
-import TextWidget from '../components/widgets/TextWidget';
 import XTeamRadioWidget from '../components/widgets/XTeamRadioWidget';
 import SettingsWindow from '../components/windows/SettingsWindow';
 import WidgetsWindow from '../components/windows/WidgetsWindow';
@@ -77,149 +59,24 @@ export default function Home() {
 			setBackgroundValue('/videos/defaultVideoBg.webm');
 		}
 
-		// Widgets
-
-		dispatch(setStickerWidgetValue('/img/stickers/headphones-cat.gif'));
-		// dispatch(setStickerWidgetOpenned(true));
-
-		let analogClockWidget = localStorage.getItem('analogClockWidget');
-		if (analogClockWidget) {
-			analogClockWidget = JSON.parse(analogClockWidget);
-			dispatch(setAnalogClockWidgetOpenned(analogClockWidget.isOpenned));
-			dispatch(setAnalogClockWidgetPosition(analogClockWidget.position));
-		} else {
-			dispatch(setAnalogClockWidgetOpenned(true));
-			dispatch(
-				setAnalogClockWidgetPosition({
-					x: window.innerWidth - 240,
-					y: window.innerHeight - 245,
-				})
-			);
-		}
-
-		let textWidget = localStorage.getItem('textWidget');
-		if (textWidget) {
-			textWidget = JSON.parse(textWidget);
-			dispatch(setTextWidgetPosition(textWidget.position));
-			dispatch(setTextWidgetOpenned(textWidget.isOpenned));
-			dispatch(setTextWidgetValue(textWidget.value));
-		} else {
-			dispatch(setTextWidgetOpenned(true));
-			dispatch(setTextWidgetValue("The dev's favorite corner."));
-			dispatch(setTextWidgetPosition({ x: 145, y: window.innerHeight - 85 }));
-		}
-
-		let stickerWidget = localStorage.getItem('stickerWidget');
-		if (stickerWidget) {
-			stickerWidget = JSON.parse(stickerWidget);
-			dispatch(setStickerWidgetOpenned(stickerWidget.isOpenned));
-			dispatch(setStickerWidgetPosition(stickerWidget.position));
-		} else {
-			dispatch(setStickerWidgetOpenned(true));
-			dispatch(
-				setStickerWidgetPosition({
-					x: window.innerWidth - 400,
-					y: window.innerHeight - 220,
-				})
-			);
-		}
-
-		let devTunesFMWidget = localStorage.getItem('devTunesFMWidget');
-		if (devTunesFMWidget) {
-			devTunesFMWidget = JSON.parse(devTunesFMWidget);
-			dispatch(setDevTunesFMWidgetOpenned(devTunesFMWidget.isOpenned));
-			dispatch(setDevTunesFMWidgetPosition(devTunesFMWidget.position));
-		} else {
-			dispatch(setDevTunesFMWidgetOpenned(false));
-		}
-
-		let xTeamRadioWidget = localStorage.getItem('xTeamRadioWidget');
-		if (xTeamRadioWidget) {
-			xTeamRadioWidget = JSON.parse(xTeamRadioWidget);
-			dispatch(setXTeamRadioWidgetOpenned(xTeamRadioWidget.isOpenned));
-			dispatch(setXTeamRadioWidgetPosition(xTeamRadioWidget.position));
-		} else {
-			dispatch(setXTeamRadioWidgetOpenned(false));
-		}
-
-		let freeCodeCampRadioWidget = localStorage.getItem('freeCodeCampRadioWidget');
-		if (freeCodeCampRadioWidget) {
-			freeCodeCampRadioWidget = JSON.parse(freeCodeCampRadioWidget);
-			dispatch(setFreeCodeCampRadioWidgetOpenned(freeCodeCampRadioWidget.isOpenned));
-			dispatch(setFreeCodeCampRadioWidgetPosition(freeCodeCampRadioWidget.position));
-		} else {
-			dispatch(setFreeCodeCampRadioWidgetOpenned(false));
-		}
-
-		let devModeFMWidget = localStorage.getItem('devModeFMWidget');
-		if (devModeFMWidget) {
-			devModeFMWidget = JSON.parse(devModeFMWidget);
-			dispatch(setDevModeFMWidgetOpenned(devModeFMWidget.isOpenned));
-			dispatch(setDevModeFMWidgetPosition(devModeFMWidget.position));
-		} else {
-			dispatch(setDevModeFMWidgetOpenned(false));
-		}
+		initHomeStates({ dispatch });
 	}, []);
 
 	/* *********************************** *** *********************************** */
-
-	const [showMoreOptions, setShowMoreOptions] = useState(false);
-
-	const resetSettings = () => {
-		localStorage.clear();
-		location.reload();
-	};
 
 	return (
 		<>
 			<Meta title={''} description={"The dev's favorite corner."} />
 
 			<main className='main-page'>
-				<header>
-					<div className='logo'>
-						<Image
-							src='/img/my.dev.corner-logo.png'
-							alt='my dev corner logo'
-							width={150}
-							height={150}
-						/>
-					</div>
-					<TextWidget />
-				</header>
+				<Header />
 
 				<MainBackground type={backgroundType} value={backgroundValue} />
 
-				<div className='buttons-container'>
-					<Button type={'icon'} variant={'primary'} handleClick={handleClickAddButton}>
-						<img src='/img/icons/add.svg' />
-					</Button>
-					<Button type={'icon'} variant={'primary'} handleClick={handleClickTuneButton}>
-						<img src='/img/icons/tune.svg' />
-					</Button>
-					<Button
-						type={'icon'}
-						variant={'primary'}
-						handleClick={() => setShowMoreOptions(!showMoreOptions)}
-					>
-						<img src='/img/icons/more.svg' />
-					</Button>
-				</div>
-
-				{showMoreOptions && (
-					<div className='more-options-container'>
-						<a
-							href='https://github.com/leviarista/my.dev.corner'
-							className='btn-link'
-							rel='noopenner noreferrer'
-							target={'_blank'}
-						>
-							Github
-						</a>
-						<a href='#' className='btn-link' onClick={() => resetSettings()}>
-							Reset settings
-						</a>
-					</div>
-				)}
+				<MainMenu
+					handleClickAddButton={handleClickAddButton}
+					handleClickTuneButton={handleClickTuneButton}
+				/>
 
 				<div id='main-container'></div>
 
