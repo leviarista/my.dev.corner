@@ -5,12 +5,7 @@ import { initHomeStates } from '../components/helperFunctions';
 import MainBackground from '../components/MainBackground';
 import MainMenu from '../components/MainMenu';
 import Meta from '../components/Meta';
-import AnalogClockWidget from '../components/widgets/AnalogClockWidget';
-import DevModeFMWidget from '../components/widgets/DevModeFMWidget';
-import DevTunesFMWidget from '../components/widgets/DevTunesFMWidget';
-import FreeCodeCampRadioWidget from '../components/widgets/FreeCodeCampRadioWidget';
-import StickerWidget from '../components/widgets/StickerWidget';
-import XTeamRadioWidget from '../components/widgets/XTeamRadioWidget';
+import WidgetsContainer from '../components/WidgetsContainer';
 import SettingsWindow from '../components/windows/SettingsWindow';
 import WidgetsWindow from '../components/windows/WidgetsWindow';
 
@@ -80,12 +75,7 @@ export default function Home() {
 
 				<div id='main-container'></div>
 
-				<StickerWidget className={'sticker-widget'} />
-				<AnalogClockWidget />
-				<DevTunesFMWidget />
-				<XTeamRadioWidget />
-				<FreeCodeCampRadioWidget />
-				<DevModeFMWidget />
+				<WidgetsContainer />
 
 				<SettingsWindow
 					isOpenned={settingsWindowOpened}

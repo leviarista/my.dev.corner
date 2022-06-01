@@ -37,6 +37,11 @@ function reducer(
 			isOpenned: false,
 			position: { x: 0, y: 0 },
 		},
+		devToPostsWidget: {
+			id: 'devToPosts',
+			isOpenned: false,
+			position: { x: 0, y: 0 },
+		},
 	},
 	action
 ) {
@@ -166,6 +171,22 @@ function reducer(
 				...state,
 				devModeFMWidget: {
 					...state.devModeFMWidget,
+					position: action.payload,
+				},
+			};
+		case 'SET_DEV_TO_POSTS_WIDGET_OPENNED':
+			return {
+				...state,
+				devToPostsWidget: {
+					...state.devToPostsWidget,
+					isOpenned: action.payload,
+				},
+			};
+		case 'SET_DEV_TO_POSTS_WIDGET_POSITION':
+			return {
+				...state,
+				devToPostsWidget: {
+					...state.devToPostsWidget,
 					position: action.payload,
 				},
 			};

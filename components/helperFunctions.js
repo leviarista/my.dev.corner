@@ -3,6 +3,8 @@ import {
 	setAnalogClockWidgetPosition,
 	setDevModeFMWidgetOpenned,
 	setDevModeFMWidgetPosition,
+	setDevToPostsWidgetOpenned,
+	setDevToPostsWidgetPosition,
 	setDevTunesFMWidgetOpenned,
 	setDevTunesFMWidgetPosition,
 	setFreeCodeCampRadioWidgetOpenned,
@@ -99,5 +101,14 @@ export const initHomeStates = ({ dispatch }) => {
 		dispatch(setDevModeFMWidgetPosition(devModeFMWidget.position));
 	} else {
 		dispatch(setDevModeFMWidgetOpenned(false));
+	}
+
+	let devToPostsWidget = localStorage.getItem('devToPostsWidget');
+	if (devToPostsWidget) {
+		devToPostsWidget = JSON.parse(devToPostsWidget);
+		dispatch(setDevToPostsWidgetOpenned(devToPostsWidget.isOpenned));
+		dispatch(setDevToPostsWidgetPosition(devToPostsWidget.position));
+	} else {
+		dispatch(setDevToPostsWidgetOpenned(false));
 	}
 };

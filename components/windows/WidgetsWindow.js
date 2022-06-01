@@ -5,6 +5,8 @@ import {
 	setAnalogClockWidgetPosition,
 	setDevModeFMWidgetOpenned,
 	setDevModeFMWidgetPosition,
+	setDevToPostsWidgetOpenned,
+	setDevToPostsWidgetPosition,
 	setDevTunesFMWidgetOpenned,
 	setDevTunesFMWidgetPosition,
 	setFreeCodeCampRadioWidgetOpenned,
@@ -24,12 +26,15 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 	const [showTextWidgetOptions, setShowTextWidgetOptions] = useState(false);
 	const [showStickerWidgetOptions, setShowStickerWidgetOptions] = useState(false);
 
-	const analogClockWidget = useSelector((state) => state.analogClockWidget);
-	const stickerWidget = useSelector((state) => state.stickerWidget);
-	const devTunesFMWidget = useSelector((state) => state.devTunesFMWidget);
-	const xTeamRadioWidget = useSelector((state) => state.xTeamRadioWidget);
-	const freeCodeCampRadioWidget = useSelector((state) => state.freeCodeCampRadioWidget);
-	const devModeFMWidget = useSelector((state) => state.devModeFMWidget);
+	const {
+		analogClockWidget,
+		stickerWidget,
+		devTunesFMWidget,
+		xTeamRadioWidget,
+		freeCodeCampRadioWidget,
+		devModeFMWidget,
+		devToPostsWidget,
+	} = useSelector((state) => state);
 
 	const handleClickWidgetOption = (id) => {
 		hideAll();
@@ -82,6 +87,13 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 				localStorage.setItem('devModeFMWidget', JSON.stringify(devModeFMWidget));
 				dispatch(setDevModeFMWidgetOpenned(true));
 				dispatch(setDevModeFMWidgetPosition(devModeFMWidget.position));
+				break;
+			case 'devToPosts':
+				devToPostsWidget.isOpenned = true;
+				devToPostsWidget.position = { x: 0, y: 0 };
+				localStorage.setItem('devToPostsWidget', JSON.stringify(devToPostsWidget));
+				dispatch(setDevToPostsWidgetOpenned(true));
+				dispatch(setDevToPostsWidgetPosition(devToPostsWidget.position));
 				break;
 			default:
 				break;
@@ -163,6 +175,13 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 							>
 								devMode.fm
 								<img src='/img/widgets/devModeFMWidget.png' width={150} />
+							</div>
+							<div
+								className='widget-option'
+								onClick={() => handleClickWidgetOption('devToPosts')}
+							>
+								dev.to Posts
+								<img src='/img/widgets/devToPostsWidget.png' width={90} />
 							</div>
 						</div>
 					</div>

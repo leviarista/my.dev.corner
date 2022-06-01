@@ -22,6 +22,7 @@
         align-items: center;
         padding: 0 10px;
         border-radius: var(--border-radius);
+        cursor: move;
     }
 }
 
@@ -32,6 +33,7 @@
 .windowed {
     background-color: var(--widget-hover-bg-color);
     border: solid var(--border-color) 1px;
+    cursor: auto;
 
     .btn-close-window {
         display: flex;

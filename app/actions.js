@@ -109,3 +109,17 @@ export const setDevModeFMWidgetPosition = (data) => {
 		payload: data,
 	};
 };
+
+export const setDevToPostsWidgetOpenned = (data) => {
+	return {
+		type: 'SET_DEV_TO_POSTS_WIDGET_OPENNED',
+		payload: data,
+	};
+};
+
+export const setDevToPostsWidgetPosition = (data) => {
+	return {
+		type: 'SET_DEV_TO_POSTS_WIDGET_POSITION',
+		payload: data,
+	};
+};
