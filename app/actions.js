@@ -123,3 +123,17 @@ export const setDevToPostsWidgetPosition = (data) => {
 		payload: data,
 	};
 };
+
+export const setZenQuotesWidgetOpenned = (data) => {
+	return {
+		type: 'SET_ZEN_QUOTES_WIDGET_OPENNED',
+		payload: data,
+	};
+};
+
+export const setZenQuotesWidgetPosition = (data) => {
+	return {
+		type: 'SET_ZEN_QUOTES_WIDGET_POSITION',
+		payload: data,
+	};
+};

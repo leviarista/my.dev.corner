@@ -17,6 +17,8 @@ import {
 	setTextWidgetValue,
 	setXTeamRadioWidgetOpenned,
 	setXTeamRadioWidgetPosition,
+	setZenQuotesWidgetOpenned,
+	setZenQuotesWidgetPosition,
 } from '../app/actions';
 
 export const initHomeStates = ({ dispatch }) => {
@@ -110,5 +112,14 @@ export const initHomeStates = ({ dispatch }) => {
 		dispatch(setDevToPostsWidgetPosition(devToPostsWidget.position));
 	} else {
 		dispatch(setDevToPostsWidgetOpenned(false));
+	}
+
+	let zenQuotesWidget = localStorage.getItem('zenQuotesWidget');
+	if (zenQuotesWidget) {
+		zenQuotesWidget = JSON.parse(zenQuotesWidget);
+		dispatch(setZenQuotesWidgetOpenned(zenQuotesWidget.isOpenned));
+		dispatch(setZenQuotesWidgetPosition(zenQuotesWidget.position));
+	} else {
+		dispatch(setZenQuotesWidgetOpenned(false));
 	}
 };

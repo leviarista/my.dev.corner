@@ -42,6 +42,11 @@ function reducer(
 			isOpenned: false,
 			position: { x: 0, y: 0 },
 		},
+		zenQuotesWidget: {
+			id: 'zenQuotes',
+			isOpenned: false,
+			position: { x: 0, y: 0 },
+		},
 	},
 	action
 ) {
@@ -187,6 +192,22 @@ function reducer(
 				...state,
 				devToPostsWidget: {
 					...state.devToPostsWidget,
+					position: action.payload,
+				},
+			};
+		case 'SET_ZEN_QUOTES_WIDGET_OPENNED':
+			return {
+				...state,
+				zenQuotesWidget: {
+					...state.zenQuotesWidget,
+					isOpenned: action.payload,
+				},
+			};
+		case 'SET_ZEN_QUOTES_WIDGET_POSITION':
+			return {
+				...state,
+				zenQuotesWidget: {
+					...state.zenQuotesWidget,
 					position: action.payload,
 				},
 			};

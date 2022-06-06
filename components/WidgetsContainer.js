@@ -7,6 +7,7 @@ import DevTunesFMWidget from './widgets/DevTunesFMWidget';
 import FreeCodeCampRadioWidget from './widgets/FreeCodeCampRadioWidget';
 import StickerWidget from './widgets/StickerWidget';
 import XTeamRadioWidget from './widgets/XTeamRadioWidget';
+import ZenQuotesWidget from './widgets/ZenQuotesWidget';
 
 const WidgetsContainer = () => {
 	const {
@@ -17,6 +18,7 @@ const WidgetsContainer = () => {
 		xTeamRadioWidget,
 		freeCodeCampRadioWidget,
 		devModeFMWidget,
+		zenQuotesWidget,
 	} = useSelector((state) => state);
 
 	return (
@@ -28,6 +30,7 @@ const WidgetsContainer = () => {
 			{freeCodeCampRadioWidget.isOpenned && <FreeCodeCampRadioWidget />}
 			{devModeFMWidget.isOpenned && <DevModeFMWidget />}
 			{devToPostsWidget.isOpenned && <DevToPostsWidget />}
+			{zenQuotesWidget.isOpenned && <ZenQuotesWidget />}
 		</>
 	);
 };

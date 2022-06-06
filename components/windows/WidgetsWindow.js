@@ -15,6 +15,8 @@ import {
 	setStickerWidgetPosition,
 	setXTeamRadioWidgetOpenned,
 	setXTeamRadioWidgetPosition,
+	setZenQuotesWidgetOpenned,
+	setZenQuotesWidgetPosition,
 } from '../../app/actions';
 import StickerWidgetOptions from '../widgets/StickerWidgetOptions';
 import TextWidgetOptions from '../widgets/TextWidgetOptions';
@@ -34,6 +36,7 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 		freeCodeCampRadioWidget,
 		devModeFMWidget,
 		devToPostsWidget,
+		zenQuotesWidget,
 	} = useSelector((state) => state);
 
 	const handleClickWidgetOption = (id) => {
@@ -94,6 +97,13 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 				localStorage.setItem('devToPostsWidget', JSON.stringify(devToPostsWidget));
 				dispatch(setDevToPostsWidgetOpenned(true));
 				dispatch(setDevToPostsWidgetPosition(devToPostsWidget.position));
+				break;
+			case 'zenQuotes':
+				zenQuotesWidget.isOpenned = true;
+				zenQuotesWidget.position = { x: 0, y: 0 };
+				localStorage.setItem('zenQuotesWidget', JSON.stringify(zenQuotesWidget));
+				dispatch(setZenQuotesWidgetOpenned(true));
+				dispatch(setZenQuotesWidgetPosition(zenQuotesWidget.position));
 				break;
 			default:
 				break;
@@ -182,6 +192,13 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 							>
 								dev.to Posts
 								<img src='/img/widgets/devToPostsWidget.png' width={90} />
+							</div>
+							<div
+								className='widget-option'
+								onClick={() => handleClickWidgetOption('zenQuotes')}
+							>
+								Zen Quotes
+								<img src='/img/widgets/zenQuotesWidget.png' width={90} />
 							</div>
 						</div>
 					</div>
