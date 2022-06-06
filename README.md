@@ -2,10 +2,16 @@
 
 My Dev Corner is a special virtual space for developers with useful widgets for everyday use.
 
-## Features
+## Widgets
 
-* Change backgrounds (color, image or video)
-* Text Widget
-* Sticker Widget
-* Analog Clock Widget
-* DevTunes FM Radio Widget
+-   Text
+-   Sticker
+-   Analog Clock
+-   DevTunes FM Radio
+-   X-Team Radio
+-   freeCodeCamp Radio
+-   devMode.fm Podcasts
+-   dev.to Posts
+-   ZenQuotes.io
+
+Also you can switch between backgrounds (color, image or video)
