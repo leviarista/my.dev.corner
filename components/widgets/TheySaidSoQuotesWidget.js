@@ -15,7 +15,7 @@ const TheySaidSoQuotesWidget = () => {
 	const [quote, setQuote] = useState();
 
 	useEffect(() => {
-		fetch('https://quotes.rest/qod?language=en')
+		fetch('https://quotes.rest/qod')
 			.then((res) => res.json())
 			.then((res) => {
 				setQuote(res.contents.quotes[0]);

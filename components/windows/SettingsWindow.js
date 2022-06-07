@@ -57,57 +57,6 @@ const SettingsWindow = ({
 		'/img/defaultImageBgThumbnail.jpg',
 	]);
 
-	useEffect(() => {
-		if (window.location.hostname !== 'localhost') {
-			// Getting image backgrounds from Appwrite
-			const bgImagesBucketId = process.env.NEXT_PUBLIC_APPWRITE_BG_IMAGES_BUCKET;
-			listFiles(bgImagesBucketId).then(
-				function (response) {
-					let imagesTmp = [],
-						thumbnailsTmp = [];
-					response.files.forEach((file) => {
-						let image = getFileView(bgImagesBucketId, file.$id);
-						let thumbnail = getFilePreview(bgImagesBucketId, file.$id, { width: 170 });
-						imagesTmp.push(image.href);
-						thumbnailsTmp.push(thumbnail.href);
-					});
-					setBgImages(imagesTmp);
-					setBgImagesThumbnails(thumbnailsTmp);
-				},
-				function (error) {
-					console.log(error);
-				}
-			);
-
-			// Getting video backgrounds from Appwrite
-			const bgVideosBucketId = process.env.NEXT_PUBLIC_APPWRITE_BG_VIDEOS_BUCKET;
-			listFiles(bgVideosBucketId).then(
-				function (response) {
-					let videosTmp = [],
-						thumbnailsTmp = [];
-					response.files.forEach((file) => {
-						if (file.mimeType === 'image/jpeg') {
-							let thumbnail = getFilePreview(bgVideosBucketId, file.$id, {
-								width: 170,
-							});
-							thumbnailsTmp.push(thumbnail.href);
-						} else {
-							let video = getFileView(bgVideosBucketId, file.$id);
-							videosTmp.push(video.href);
-						}
-					});
-					videosTmp = videosTmp.sort();
-					setBgVideos(videosTmp);
-					thumbnailsTmp = thumbnailsTmp.sort();
-					setBgVideosThumbnails(thumbnailsTmp);
-				},
-				function (error) {
-					console.log(error);
-				}
-			);
-		}
-	}, []);
-
 	return (
 		isOpenned && (
 			<Window
