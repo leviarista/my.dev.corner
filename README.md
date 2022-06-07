@@ -1,6 +1,6 @@
 # My Dev Corner
 
-My Dev Corner is a special virtual space for developers with useful widgets for everyday use.
+My Dev Corner is a virtual space for developers with useful widgets for everyday use.
 
 ## Widgets
 
