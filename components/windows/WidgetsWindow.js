@@ -13,10 +13,10 @@ import {
 	setFreeCodeCampRadioWidgetPosition,
 	setStickerWidgetOpenned,
 	setStickerWidgetPosition,
+	setTheySaidSoQuotesWidgetOpenned,
+	setTheySaidSoQuotesWidgetPosition,
 	setXTeamRadioWidgetOpenned,
 	setXTeamRadioWidgetPosition,
-	setZenQuotesWidgetOpenned,
-	setZenQuotesWidgetPosition,
 } from '../../app/actions';
 import StickerWidgetOptions from '../widgets/StickerWidgetOptions';
 import TextWidgetOptions from '../widgets/TextWidgetOptions';
@@ -36,7 +36,7 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 		freeCodeCampRadioWidget,
 		devModeFMWidget,
 		devToPostsWidget,
-		zenQuotesWidget,
+		theySaidSoQuotesWidget,
 	} = useSelector((state) => state);
 
 	const handleClickWidgetOption = (id) => {
@@ -98,12 +98,15 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 				dispatch(setDevToPostsWidgetOpenned(true));
 				dispatch(setDevToPostsWidgetPosition(devToPostsWidget.position));
 				break;
-			case 'zenQuotes':
-				zenQuotesWidget.isOpenned = true;
-				zenQuotesWidget.position = { x: 0, y: 0 };
-				localStorage.setItem('zenQuotesWidget', JSON.stringify(zenQuotesWidget));
-				dispatch(setZenQuotesWidgetOpenned(true));
-				dispatch(setZenQuotesWidgetPosition(zenQuotesWidget.position));
+			case 'theySaidSoQuotes':
+				theySaidSoQuotesWidget.isOpenned = true;
+				theySaidSoQuotesWidget.position = { x: 0, y: 0 };
+				localStorage.setItem(
+					'theySaidSoQuotesWidget',
+					JSON.stringify(theySaidSoQuotesWidget)
+				);
+				dispatch(setTheySaidSoQuotesWidgetOpenned(true));
+				dispatch(setTheySaidSoQuotesWidgetPosition(theySaidSoQuotesWidget.position));
 				break;
 			default:
 				break;
@@ -195,10 +198,10 @@ const WidgetsWindow = ({ isOpenned, closeWidgetsWindow }) => {
 							</div>
 							<div
 								className='widget-option'
-								onClick={() => handleClickWidgetOption('zenQuotes')}
+								onClick={() => handleClickWidgetOption('theySaidSoQuotes')}
 							>
-								Zen Quotes
-								<img src='/img/widgets/zenQuotesWidget.png' width={90} />
+								They Said So Quotes
+								<img src='/img/widgets/theySaidSoQuotesWidget.png' width={90} />
 							</div>
 						</div>
 					</div>

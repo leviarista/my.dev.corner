@@ -12,6 +12,6 @@ My Dev Corner is a special virtual space for developers with useful widgets for 
 -   freeCodeCamp Radio
 -   devMode.fm Podcasts
 -   dev.to Posts
--   ZenQuotes.io
+-   They Said So Quotes
 
 Also you can switch between backgrounds (color, image or video)

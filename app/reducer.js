@@ -42,8 +42,8 @@ function reducer(
 			isOpenned: false,
 			position: { x: 0, y: 0 },
 		},
-		zenQuotesWidget: {
-			id: 'zenQuotes',
+		theySaidSoQuotesWidget: {
+			id: 'theySaidSoQuotes',
 			isOpenned: false,
 			position: { x: 0, y: 0 },
 		},
@@ -195,19 +195,19 @@ function reducer(
 					position: action.payload,
 				},
 			};
-		case 'SET_ZEN_QUOTES_WIDGET_OPENNED':
+		case 'SET_THEY_SAID_SO_WIDGET_OPENNED':
 			return {
 				...state,
-				zenQuotesWidget: {
-					...state.zenQuotesWidget,
+				theySaidSoQuotesWidget: {
+					...state.theySaidSoQuotesWidget,
 					isOpenned: action.payload,
 				},
 			};
-		case 'SET_ZEN_QUOTES_WIDGET_POSITION':
+		case 'SET_THEY_SAID_SO_WIDGET_POSITION':
 			return {
 				...state,
-				zenQuotesWidget: {
-					...state.zenQuotesWidget,
+				theySaidSoQuotesWidget: {
+					...state.theySaidSoQuotesWidget,
 					position: action.payload,
 				},
 			};

@@ -15,10 +15,10 @@ import {
 	setTextWidgetOpenned,
 	setTextWidgetPosition,
 	setTextWidgetValue,
+	setTheySaidSoQuotesWidgetOpenned,
+	setTheySaidSoQuotesWidgetPosition,
 	setXTeamRadioWidgetOpenned,
 	setXTeamRadioWidgetPosition,
-	setZenQuotesWidgetOpenned,
-	setZenQuotesWidgetPosition,
 } from '../app/actions';
 
 export const initHomeStates = ({ dispatch }) => {
@@ -114,12 +114,12 @@ export const initHomeStates = ({ dispatch }) => {
 		dispatch(setDevToPostsWidgetOpenned(false));
 	}
 
-	let zenQuotesWidget = localStorage.getItem('zenQuotesWidget');
-	if (zenQuotesWidget) {
-		zenQuotesWidget = JSON.parse(zenQuotesWidget);
-		dispatch(setZenQuotesWidgetOpenned(zenQuotesWidget.isOpenned));
-		dispatch(setZenQuotesWidgetPosition(zenQuotesWidget.position));
+	let theySaidSoQuotesWidget = localStorage.getItem('theySaidSoQuotesWidget');
+	if (theySaidSoQuotesWidget) {
+		theySaidSoQuotesWidget = JSON.parse(theySaidSoQuotesWidget);
+		dispatch(setTheySaidSoQuotesWidgetOpenned(theySaidSoQuotesWidget.isOpenned));
+		dispatch(setTheySaidSoQuotesWidgetPosition(theySaidSoQuotesWidget.position));
 	} else {
-		dispatch(setZenQuotesWidgetOpenned(false));
+		dispatch(setTheySaidSoQuotesWidgetOpenned(false));
 	}
 };

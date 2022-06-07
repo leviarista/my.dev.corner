@@ -6,6 +6,7 @@
     --cod-gray: #121212;
     --bon-jour: #EEEBEE;
     --black-o-75: rgba(0, 0, 0, .75);
+    --black-o-55: rgba(0, 0, 0, .55);
     --black-o-50: rgba(0, 0, 0, .5);
     --black-o-25: rgba(0, 0, 0, .25);
     --white-o-50: rgba(255, 255, 255, 0.5);
@@ -52,7 +53,7 @@
     --button-primary-color: linear-gradient(180deg, #9E709E 0.52%, #5C3A5D 50.52%, #4A2A51 100%);
     --button-hover-shadow-color: var(--white-o-50);
     /* Windows */
-    --window-bg-color: var(--black-o-50);
+    --window-bg-color: var(--black-o-55);
     --window-title-bg-color: var(--voodoo-o-50);
     --window-shadow-color: var(--white-o-25);
     /* Widgets */
